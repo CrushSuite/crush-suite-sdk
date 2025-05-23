@@ -1,0 +1,21 @@
+{
+  "name": "@crushsuite/react",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0"
+  },
+  "dependencies": {
+    "@crushsuite/sdk": "*",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.5",
+    "@types/react-dom": "^19.1.5",
+    "typescript": "^5.0.0"
+  }
+}

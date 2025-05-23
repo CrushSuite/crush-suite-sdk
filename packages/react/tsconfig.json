@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "types": ["react", "react-dom"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true
+  },
+  "references": [
+    { "path": "../core" }
+  ],
+  "include": ["src"]
+}

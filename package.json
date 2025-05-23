@@ -1,5 +1,7 @@
 {
   "name": "crush-suite-sdk",
+  "private": true,
+  "workspaces": ["packages/*"],
   "version": "0.0.1",
   "description": "CrushSuite SDK",
   "main": "index.js",
