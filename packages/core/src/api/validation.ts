@@ -55,11 +55,9 @@ export const ComplianceFeeBodyReq = z
 export const ComplianceEventReq = z
   .object({
     eventType: z.enum(["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]),
-    variants: z.array(
-      z.object({
-        quantity: z.number(),
-        id: z.number(),
-      })
-    ),
+    sessionId: z.string(),
+    failedReason: z.string().optional(),
+    failedPayload: z.string().optional(),
+    failedUser: z.string().optional(),
   })
   .required();
