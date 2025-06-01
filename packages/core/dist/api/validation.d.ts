@@ -156,7 +156,6 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         street2?: string | undefined;
     };
 }>;
-export type OrderCheckComplianceReqSchema = z.infer<typeof ComplianceBodyReq>;
 export declare const ComplianceFeeBodyReq: z.ZodObject<{
     variants: z.ZodArray<z.ZodObject<{
         quantity: z.ZodNumber;
@@ -182,4 +181,28 @@ export declare const ComplianceFeeBodyReq: z.ZodObject<{
     }[];
     shippingStateCode: string;
 }>;
-export type OrderCheckComplianceFeeReqSchema = z.infer<typeof ComplianceFeeBodyReq>;
+export declare const ComplianceEventReq: z.ZodObject<{
+    eventType: z.ZodEnum<["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]>;
+    variants: z.ZodArray<z.ZodObject<{
+        quantity: z.ZodNumber;
+        id: z.ZodNumber;
+    }, "strip", z.ZodTypeAny, {
+        quantity: number;
+        id: number;
+    }, {
+        quantity: number;
+        id: number;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    variants: {
+        quantity: number;
+        id: number;
+    }[];
+    eventType: "INITIATED" | "SUBMITTED" | "APPROVED" | "FAILED";
+}, {
+    variants: {
+        quantity: number;
+        id: number;
+    }[];
+    eventType: "INITIATED" | "SUBMITTED" | "APPROVED" | "FAILED";
+}>;

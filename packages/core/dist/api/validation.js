@@ -45,3 +45,12 @@ export const ComplianceFeeBodyReq = z
     shippingStateCode: z.string(),
 })
     .required();
+export const ComplianceEventReq = z
+    .object({
+    eventType: z.enum(["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]),
+    variants: z.array(z.object({
+        quantity: z.number(),
+        id: z.number(),
+    })),
+})
+    .required();

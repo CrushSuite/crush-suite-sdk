@@ -1,5 +1,5 @@
 import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
-import { ComplianceBodyReq } from "./validation";
+import { ComplianceBodyReq, ComplianceEventReq, ComplianceFeeBodyReq, } from "./validation";
 export function createClient({ privateKey, sandboxKey, _environment, }) {
     const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;
     const baseUrl = `${apiUrl}/${BASE_PATH}`;
@@ -30,7 +30,7 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
     return {
         compliance: {
             complianceEvent: (eventData) => {
-                const validatedData = ComplianceBodyReq.parse(eventData);
+                const validatedData = ComplianceEventReq.parse(eventData);
                 return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
             },
             prepurchaseCompliance: (complianceData) => {
@@ -38,7 +38,7 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
                 return post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
             },
             alcoholFee: (complianceData) => {
-                const validatedData = ComplianceBodyReq.parse(complianceData);
+                const validatedData = ComplianceFeeBodyReq.parse(complianceData);
                 return post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
             },
         },

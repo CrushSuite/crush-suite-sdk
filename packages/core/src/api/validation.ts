@@ -40,8 +40,6 @@ export const ComplianceBodyReq = z
   })
   .required();
 
-export type OrderCheckComplianceReqSchema = z.infer<typeof ComplianceBodyReq>;
-
 export const ComplianceFeeBodyReq = z
   .object({
     variants: z.array(
@@ -54,6 +52,14 @@ export const ComplianceFeeBodyReq = z
   })
   .required();
 
-export type OrderCheckComplianceFeeReqSchema = z.infer<
-  typeof ComplianceFeeBodyReq
->;
+export const ComplianceEventReq = z
+  .object({
+    eventType: z.enum(["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]),
+    variants: z.array(
+      z.object({
+        quantity: z.number(),
+        id: z.number(),
+      })
+    ),
+  })
+  .required();
