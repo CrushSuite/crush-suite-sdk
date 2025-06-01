@@ -4,7 +4,7 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
     const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;
     const baseUrl = `${apiUrl}/${BASE_PATH}`;
     async function get(endpoint) {
-        const res = await fetch(`${baseUrl}${endpoint}`, {
+        const res = await fetch(`${baseUrl}/${endpoint}`, {
             headers: {
                 "x-api-key": privateKey,
                 "x-api-key-sandbox": sandboxKey || "", // Optional for sandbox
@@ -15,7 +15,7 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
         return res.json();
     }
     async function post(endpoint, body) {
-        const res = await fetch(`${baseUrl}${endpoint}`, {
+        const res = await fetch(`${baseUrl}/${endpoint}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,6 +30,7 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
     return {
         compliance: {
             complianceEvent: (eventData) => {
+                console.log("Compliance Event Data:", eventData);
                 const validatedData = ComplianceEventReq.parse(eventData);
                 return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
             },

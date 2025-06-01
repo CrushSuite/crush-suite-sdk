@@ -15,7 +15,7 @@ export function createClient({
   const baseUrl = `${apiUrl}/${BASE_PATH}`;
 
   async function get<T>(endpoint: string): Promise<T> {
-    const res = await fetch(`${baseUrl}${endpoint}`, {
+    const res = await fetch(`${baseUrl}/${endpoint}`, {
       headers: {
         "x-api-key": privateKey,
         "x-api-key-sandbox": sandboxKey || "", // Optional for sandbox
@@ -26,7 +26,7 @@ export function createClient({
   }
 
   async function post<T>(endpoint: string, body: any): Promise<T> {
-    const res = await fetch(`${baseUrl}${endpoint}`, {
+    const res = await fetch(`${baseUrl}/${endpoint}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,6 +41,7 @@ export function createClient({
   return {
     compliance: {
       complianceEvent: (eventData) => {
+        console.log("Compliance Event Data:", eventData);
         const validatedData = ComplianceEventReq.parse(eventData);
         return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
       },

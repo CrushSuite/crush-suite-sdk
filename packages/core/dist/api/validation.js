@@ -1,6 +1,5 @@
 import { z } from "zod";
-export const ComplianceBodyReq = z
-    .object({
+export const ComplianceBodyReq = z.object({
     variants: z.array(z.object({
         quantity: z.number(),
         id: z.number(),
@@ -34,23 +33,18 @@ export const ComplianceBodyReq = z
         stateCode: z.string(),
         country: z.string(),
     }),
-})
-    .required();
-export const ComplianceFeeBodyReq = z
-    .object({
+});
+export const ComplianceFeeBodyReq = z.object({
     variants: z.array(z.object({
         quantity: z.number(),
         id: z.number(),
     })),
     shippingStateCode: z.string(),
-})
-    .required();
-export const ComplianceEventReq = z
-    .object({
+});
+export const ComplianceEventReq = z.object({
     eventType: z.enum(["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]),
     sessionId: z.string(),
     failedReason: z.string().optional(),
     failedPayload: z.string().optional(),
     failedUser: z.string().optional(),
-})
-    .required();
+});

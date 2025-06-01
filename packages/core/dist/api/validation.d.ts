@@ -184,19 +184,19 @@ export declare const ComplianceFeeBodyReq: z.ZodObject<{
 export declare const ComplianceEventReq: z.ZodObject<{
     eventType: z.ZodEnum<["INITIATED", "SUBMITTED", "APPROVED", "FAILED"]>;
     sessionId: z.ZodString;
-    failedReason: z.ZodString;
-    failedPayload: z.ZodString;
-    failedUser: z.ZodString;
+    failedReason: z.ZodOptional<z.ZodString>;
+    failedPayload: z.ZodOptional<z.ZodString>;
+    failedUser: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     eventType: "INITIATED" | "SUBMITTED" | "APPROVED" | "FAILED";
     sessionId: string;
-    failedReason: string;
-    failedPayload: string;
-    failedUser: string;
+    failedReason?: string | undefined;
+    failedPayload?: string | undefined;
+    failedUser?: string | undefined;
 }, {
     eventType: "INITIATED" | "SUBMITTED" | "APPROVED" | "FAILED";
     sessionId: string;
-    failedReason: string;
-    failedPayload: string;
-    failedUser: string;
+    failedReason?: string | undefined;
+    failedPayload?: string | undefined;
+    failedUser?: string | undefined;
 }>;
