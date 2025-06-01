@@ -1,14 +1,25 @@
 {
   "name": "crush-suite-sdk",
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
   "version": "0.0.1",
   "description": "CrushSuite SDK",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./core": {
+      "import": "./packages/core/dist/index.js",
+      "types": "./packages/core/dist/index.d.ts"
+    },
+    "./react": {
+      "import": "./packages/react/dist/index.js",
+      "types": "./packages/react/dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "build": "npm run build:core && npm run build:react",
+    "build": "npm run build -ws",
+    "zbuild": "npm run build:core && npm run build:react",
     "build:core": "cd packages/core && npm run build",
     "build:react": "",
     "test": "echo \"Error: no test specified\" && exit 1"
