@@ -4,11 +4,6 @@ export interface CrushSuiteConfig {
     sandboxKey?: string;
     _environment?: "production" | "staging";
 }
-export interface Product {
-    id: string;
-    title: string;
-    description: string;
-}
 export interface CrushSuiteAPI {
     compliance: {
         complianceEvent(eventData: PrecomplianceEvent): Promise<PrecomplianceEventResponse>;

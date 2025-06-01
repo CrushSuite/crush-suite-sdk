@@ -8,7 +8,9 @@
   "description": "CrushSuite SDK",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:core && npm run build:react",
     "build:core": "cd packages/core && npm run build",
+    "build:react": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

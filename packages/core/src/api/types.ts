@@ -3,14 +3,7 @@ import { PrecomplianceEventType } from "./constants";
 export interface CrushSuiteConfig {
   privateKey: string;
   sandboxKey?: string;
-  // shopDomain: string;
   _environment?: "production" | "staging";
-}
-
-export interface Product {
-  id: string;
-  title: string;
-  description: string;
 }
 
 export interface CrushSuiteAPI {
@@ -41,7 +34,7 @@ export type PrecomplianceEventType =
 export type OrderCheckComplianceAddress = {
   firstName: string;
   lastName: string;
-  businessName?: string;
+  businessName?: string; // Optional for business addresses
   street1: string;
   street2?: string;
   city: string;
@@ -83,7 +76,7 @@ export interface OrderCheckComplianceResponse {
 }
 
 export type OrderCheckComplianceFeeRequest = {
-  shippingStateCode: string;
+  shippingStateCode: string; // 2 letter state code, e.g. 'OR', 'CA', 'NY'
   variants: { id: number; quantity: number }[];
 };
 
