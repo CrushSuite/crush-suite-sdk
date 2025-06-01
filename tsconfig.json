@@ -14,7 +14,8 @@
     "paths": {
       "@crushsuite/*": ["packages/*/src"]
     },
-    "composite": true
+    "composite": true,
+    "rootDir": "src"
   },
   "include": ["src"]
 }
