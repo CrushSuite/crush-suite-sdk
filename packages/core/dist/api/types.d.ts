@@ -1,8 +1,8 @@
-import { PrecomplianceEventType } from './constants';
+import { PrecomplianceEventType } from "./constants";
 export interface CrushSuiteConfig {
     privateKey: string;
     sandboxKey?: string;
-    _environment?: 'production' | 'staging';
+    _environment?: "production" | "staging";
 }
 export interface Product {
     id: string;
@@ -21,9 +21,9 @@ export interface CrushSuiteAPI {
  */
 export type PrecomplianceEventType = (typeof PrecomplianceEventType)[keyof typeof PrecomplianceEventType];
 /** Order compliance types
-  * These types are used for checking compliance of orders
-  * and for the precompliance process.
-  */
+ * These types are used for checking compliance of orders
+ * and for the precompliance process.
+ */
 export type OrderCheckComplianceAddress = {
     firstName: string;
     lastName: string;
@@ -108,7 +108,7 @@ export interface PrecomplianceCustomer {
     };
     dateOfBirth: PrecomplianceCustomerDOB;
 }
-type PrecomplianceCustomerDOB = {
+export type PrecomplianceCustomerDOB = {
     day: number;
     month: number;
     year: number;

@@ -1,14 +1,15 @@
-import { AnyZodObject } from "zod";
-import {
+import type {
   CrushSuiteConfig,
   CrushSuiteAPI,
   OrderCheckComplianceRequest,
+  OrderCheckComplianceResponse,
 } from "./types";
 import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
 import { ComplianceBodyReq } from "./validation";
 
 export function createClient({
   privateKey,
+  sandboxKey,
   _environment,
 }: CrushSuiteConfig): CrushSuiteAPI {
   const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;
@@ -16,7 +17,10 @@ export function createClient({
 
   async function get<T>(endpoint: string): Promise<T> {
     const res = await fetch(`${baseUrl}${endpoint}`, {
-      headers: { "x-api-key": privateKey },
+      headers: {
+        "x-api-key": privateKey,
+        "x-api-key-sandbox": sandboxKey || "", // Optional for sandbox
+      },
     });
     if (!res.ok) throw new Error(`API Error: ${res.statusText}`);
     return res.json();
@@ -36,14 +40,14 @@ export function createClient({
   }
 
   return {
-    // getProducts: () => get<Product[]>('/products'),
-    // getProductById: (id: string) => get<Product>(`/products/${id}`),
     compliance: {
       complianceEvent: (eventData: any) => {
         const validatedData = ComplianceBodyReq.parse(eventData);
         return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
       },
-      prepurchaseCompliance: (complianceData: OrderCheckComplianceRequest) => {
+      prepurchaseCompliance: (
+        complianceData: OrderCheckComplianceRequest
+      ): Promise<OrderCheckComplianceResponse> => {
         const validatedData = ComplianceBodyReq.parse(complianceData);
         return post(
           `${ENDPOINTS.compliance.prepurchaseCompliance}`,
