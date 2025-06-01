@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createClient = createClient;
-const constants_1 = require("./constants");
-const validation_1 = require("./validation");
-function createClient({ privateKey, sandboxKey, _environment, }) {
-    const apiUrl = _environment === "staging" ? constants_1.STAGING_API : constants_1.PRODUCTION_API;
-    const baseUrl = `${apiUrl}/${constants_1.BASE_PATH}`;
+import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
+import { ComplianceBodyReq } from "./validation";
+export function createClient({ privateKey, sandboxKey, _environment, }) {
+    const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;
+    const baseUrl = `${apiUrl}/${BASE_PATH}`;
     async function get(endpoint) {
         const res = await fetch(`${baseUrl}${endpoint}`, {
             headers: {
@@ -33,16 +30,16 @@ function createClient({ privateKey, sandboxKey, _environment, }) {
     return {
         compliance: {
             complianceEvent: (eventData) => {
-                const validatedData = validation_1.ComplianceBodyReq.parse(eventData);
-                return post(`${constants_1.ENDPOINTS.compliance.complianceEvent}`, validatedData);
+                const validatedData = ComplianceBodyReq.parse(eventData);
+                return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
             },
             prepurchaseCompliance: (complianceData) => {
-                const validatedData = validation_1.ComplianceBodyReq.parse(complianceData);
-                return post(`${constants_1.ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
+                const validatedData = ComplianceBodyReq.parse(complianceData);
+                return post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
             },
             alcoholFee: (complianceData) => {
-                const validatedData = validation_1.ComplianceBodyReq.parse(complianceData);
-                return post(`${constants_1.ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
+                const validatedData = ComplianceBodyReq.parse(complianceData);
+                return post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
             },
         },
     };
