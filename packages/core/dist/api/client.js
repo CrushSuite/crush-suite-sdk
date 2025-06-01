@@ -40,6 +40,10 @@ function createClient({ privateKey, sandboxKey, _environment, }) {
                 const validatedData = validation_1.ComplianceBodyReq.parse(complianceData);
                 return post(`${constants_1.ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
             },
+            alcoholFee: (complianceData) => {
+                const validatedData = validation_1.ComplianceBodyReq.parse(complianceData);
+                return post(`${constants_1.ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
+            },
         },
     };
 }

@@ -14,11 +14,16 @@ export interface Product {
 }
 
 export interface CrushSuiteAPI {
-  // getProducts(): Promise<Product[]>;
-  // getProductById(id: string): Promise<Product>;
   compliance: {
-    complianceEvent(eventData: any): Promise<any>;
-    prepurchaseCompliance(complianceData: any): Promise<any>;
+    complianceEvent(
+      eventData: PrecomplianceEvent
+    ): Promise<PrecomplianceEventResponse>;
+    prepurchaseCompliance(
+      complianceData: OrderCheckComplianceRequest
+    ): Promise<OrderCheckComplianceResponse>;
+    alcoholFee(
+      complianceData: OrderCheckComplianceFeeRequest
+    ): Promise<OrderCheckComplianceFeeResponse>;
   };
 }
 
@@ -106,6 +111,10 @@ export interface PrecomplianceEvent {
   failedPayload?: string; // JSON
   failedUser?: string; // JSON
 }
+
+export type PrecomplianceEventResponse = {
+  message: string;
+};
 
 // this gets saved to redis
 export interface PrecomplianceCustomer {

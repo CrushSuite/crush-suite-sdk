@@ -11,8 +11,9 @@ export interface Product {
 }
 export interface CrushSuiteAPI {
     compliance: {
-        complianceEvent(eventData: any): Promise<any>;
-        prepurchaseCompliance(complianceData: any): Promise<any>;
+        complianceEvent(eventData: PrecomplianceEvent): Promise<PrecomplianceEventResponse>;
+        prepurchaseCompliance(complianceData: OrderCheckComplianceRequest): Promise<OrderCheckComplianceResponse>;
+        alcoholFee(complianceData: OrderCheckComplianceFeeRequest): Promise<OrderCheckComplianceFeeResponse>;
     };
 }
 /**
@@ -95,6 +96,9 @@ export interface PrecomplianceEvent {
     failedPayload?: string;
     failedUser?: string;
 }
+export type PrecomplianceEventResponse = {
+    message: string;
+};
 export interface PrecomplianceCustomer {
     email: string;
     firstName: string;

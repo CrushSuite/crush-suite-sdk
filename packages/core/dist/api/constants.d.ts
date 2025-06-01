@@ -5,6 +5,7 @@ export declare const ENDPOINTS: {
     compliance: {
         complianceEvent: string;
         prepurchaseCompliance: string;
+        alcoholFee: string;
     };
 };
 export declare const PrecomplianceEventType: {

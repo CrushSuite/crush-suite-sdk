@@ -1,9 +1,4 @@
-import type {
-  CrushSuiteConfig,
-  CrushSuiteAPI,
-  OrderCheckComplianceRequest,
-  OrderCheckComplianceResponse,
-} from "./types";
+import type { CrushSuiteConfig, CrushSuiteAPI } from "./types";
 import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
 import { ComplianceBodyReq } from "./validation";
 
@@ -45,9 +40,14 @@ export function createClient({
         const validatedData = ComplianceBodyReq.parse(eventData);
         return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
       },
-      prepurchaseCompliance: (
-        complianceData: OrderCheckComplianceRequest
-      ): Promise<OrderCheckComplianceResponse> => {
+      prepurchaseCompliance: (complianceData) => {
+        const validatedData = ComplianceBodyReq.parse(complianceData);
+        return post(
+          `${ENDPOINTS.compliance.prepurchaseCompliance}`,
+          validatedData
+        );
+      },
+      alcoholFee: (complianceData) => {
         const validatedData = ComplianceBodyReq.parse(complianceData);
         return post(
           `${ENDPOINTS.compliance.prepurchaseCompliance}`,
