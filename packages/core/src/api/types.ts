@@ -42,7 +42,7 @@ export type OrderCheckComplianceAddress = {
   city: string;
   postalCode: string;
   stateCode: string;
-  country: string; // 2 letter
+  country: string; // 2 letter country code, e.g. 'US', 'CA'
 };
 
 export type OrderCheckComplianceDOB = {
@@ -57,7 +57,7 @@ export type OrderCheckComplianceRequest = {
   shipToAddress: OrderCheckComplianceAddress;
   dob: OrderCheckComplianceDOB;
   email: string;
-  phoneNumber: string;
+  phoneNumber: string; // Must be 10-digit US phone number
 };
 
 export type ComplianceFee = { [key: VariantId]: Quantity };
