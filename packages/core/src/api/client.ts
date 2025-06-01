@@ -1,9 +1,9 @@
 import { CrushSuiteConfig, CrushSuiteAPI, Product } from './types';
-import { CS_STAGING_BASE_URL, CS_PRODUCTION_BASE_URL, CS_BASE_PATH, CS_ENDPOINTS } from '../constants';
+import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from './constants';
 
 export function createClient({ privateKey, _environment }: CrushSuiteConfig): CrushSuiteAPI {
-  const apiUrl = _environment === 'staging' ? CS_STAGING_BASE_URL : CS_PRODUCTION_BASE_URL;
-  const baseUrl = `${apiUrl}/${CS_BASE_PATH}`;
+  const apiUrl = _environment === 'staging' ? STAGING_API : PRODUCTION_API;
+  const baseUrl = `${apiUrl}/${BASE_PATH}`;
 
   async function get<T>(endpoint: string): Promise<T> {
     const res = await fetch(`${baseUrl}${endpoint}`, {
@@ -27,7 +27,11 @@ export function createClient({ privateKey, _environment }: CrushSuiteConfig): Cr
   }
 
   return {
-    getProducts: () => get<Product[]>('/products'),
-    getProductById: (id: string) => get<Product>(`/products/${id}`),
+    // getProducts: () => get<Product[]>('/products'),
+    // getProductById: (id: string) => get<Product>(`/products/${id}`),
+    compliance: {
+      complianceEvent: (eventData: any) => post(`${ENDPOINTS.compliance.complianceEvent}`, eventData),
+      prepurchaseCompliance: (complianceData: any) => post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, complianceData),
+    },
   };
 }
