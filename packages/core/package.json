@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zod": "^3.25.45"
+  },
   "devDependencies": {
     "typescript": "^5.0.0"
   }

@@ -1,2 +1,2 @@
 import { CrushSuiteConfig, CrushSuiteAPI } from './types';
-export declare function createCrushSuiteClient(config: CrushSuiteConfig): CrushSuiteAPI;
+export declare function createClient({ privateKey, _environment }: CrushSuiteConfig): CrushSuiteAPI;
