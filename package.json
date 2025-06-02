@@ -6,6 +6,7 @@
   "version": "0.0.1",
   "description": "CrushSuite SDK",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     "./core": {
@@ -26,7 +27,7 @@
     "build:root": "tsc -p tsconfig.json",
     "zbuild": "npm run build:core && npm run build:react",
     "build:core": "cd packages/core && npm run build",
-    "build:react": "",
+    "build:react": "cd packages/react && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/CrushSuite/crush-suite-sdk/issues"
   },
-  "homepage": "https://github.com/CrushSuite/crush-suite-sdk#readme"
+  "homepage": "https://github.com/CrushSuite/crush-suite-sdk#readme",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
 }
