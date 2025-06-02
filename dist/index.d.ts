@@ -1,2 +1,2 @@
-export * from "../packages/core/dist";
-export * from "../packages/react/dist";
+export * from "../packages/core/dist/index.js";
+export * from "../packages/react/dist/index.js";
