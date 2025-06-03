@@ -1,3 +1,5 @@
+"use client";
+import { jsx as _jsx } from "react/jsx-runtime";
 import { createContext, useContext, useState } from "react";
 // 1️⃣ Define your default context value with NOOP setters to prevent runtime errors
 const defaultContext = {
@@ -9,7 +11,7 @@ const defaultContext = {
     shippingState: null,
     setShippingState: () => { },
 };
-export const CrushSuiteContext = createContext(defaultContext);
+const CrushSuiteContext = createContext(defaultContext);
 export const CrushSuiteProvider = ({ children, }) => {
     const [customerDOB, setCustomerDOB] = useState(null);
     const [customerDefaultAddress, setCustomerDefaultAddress] = useState(null);
@@ -23,12 +25,9 @@ export const CrushSuiteProvider = ({ children, }) => {
         shippingState,
         setShippingState,
     };
-    return value = { contextValue } >
-        { children }
-        < /CrushSuiteContext.Provider>;
+    // value={contextValue}
+    return (_jsx(CrushSuiteContext.Provider, { value: contextValue, children: children }));
 };
-;
-;
 export const useCrushSuite = () => {
     return useContext(CrushSuiteContext);
 };

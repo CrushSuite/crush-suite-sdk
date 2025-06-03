@@ -1,9 +1,9 @@
-export type CrushSuiteContext = {
+export type CrushSuiteContextType = {
     namespace: string;
     customerDOB: string | null;
-    setCustomerDOB: () => void;
+    setCustomerDOB: (arg0: string | null) => void;
     customerDefaultAddress: string | null;
-    setCustomerDefaultAddress: () => void;
+    setCustomerDefaultAddress: (arg0: string | null) => void;
     shippingState: string | null;
-    setShippingState: () => void;
+    setShippingState: (arg0: string | null) => void;
 };
