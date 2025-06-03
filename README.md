@@ -26,7 +26,16 @@ export const crushSuiteClient = createClient({
 Then, utilize one of the client methods to make your request.
 
 ### Compliance
+To send compliance events (for analytics and logging), use:
 
+```ts
+crushSuiteClient.compliance.complianceEvent({
+  sessionId: 'The Shopify session ID',
+  eventType: 'INITIATED', // Or SUBMITTED, APPROVED, FAILED
+  failedReason: '', // (Optional)
+  failedPayload: string, // (Optional), format as JSON
+  failedUser: string, // (Optional) format as JSON
+})
 
 
 ## Utilizing the CrushSuite API without the SDK
