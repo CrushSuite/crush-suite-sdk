@@ -1,5 +1,5 @@
 {
-  "name": "crush-suite-sdk",
+  "name": "@crushsuite/crush-suite-sdk",
   "workspaces": [
     "packages/*"
   ],
@@ -28,7 +28,8 @@
     "zbuild": "npm run build:core && npm run build:react",
     "build:core": "cd packages/core && npm run build",
     "build:react": "cd packages/react && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
