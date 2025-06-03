@@ -5,6 +5,7 @@ export const CrushSuiteContext = createContext<CrushSuiteContextType>({
   namespace: "app--98845425665--crush_suite",
   customerDOB: null,
   customerDefaultAddress: null,
+  shippingState: null,
 });
 
 export const useCrushSuite = () => {

@@ -1,3 +1,3 @@
-import { CrushSuiteAPI } from '@crushsuite/sdk';
-export declare const CrushSuiteContext: import("react").Context<CrushSuiteAPI | null>;
-export declare const useCrushSuite: () => CrushSuiteAPI;
+import { CrushSuiteContext as CrushSuiteContextType } from "../types";
+export declare const CrushSuiteContext: import("react").Context<CrushSuiteContextType>;
+export declare const useCrushSuite: () => CrushSuiteContextType;

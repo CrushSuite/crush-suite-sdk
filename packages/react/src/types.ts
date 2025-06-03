@@ -1,5 +1,6 @@
 export type CrushSuiteContext = {
-  namespace: string;
-  customerDOB: string | null;
+  namespace: string; // Unique namespace for the Crush Suite instance
+  customerDOB: string | null; // ISO date string, e.g., "1990-01-01"
   customerDefaultAddress: string | null;
+  shippingState: string | null; // 2-letter state code, e.g., "CA" for California
 };
