@@ -41,7 +41,6 @@ export function createClient({
   return {
     compliance: {
       complianceEvent: (eventData) => {
-        console.log("Compliance Event Data:", eventData);
         const validatedData = ComplianceEventReq.parse(eventData);
         return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
       },

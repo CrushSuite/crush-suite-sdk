@@ -30,7 +30,6 @@ export function createClient({ privateKey, sandboxKey, _environment, }) {
     return {
         compliance: {
             complianceEvent: (eventData) => {
-                console.log("Compliance Event Data:", eventData);
                 const validatedData = ComplianceEventReq.parse(eventData);
                 return post(`${ENDPOINTS.compliance.complianceEvent}`, validatedData);
             },
