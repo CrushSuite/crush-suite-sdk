@@ -43,5 +43,9 @@
   "homepage": "https://github.com/CrushSuite/crush-suite-sdk#readme",
   "devDependencies": {
     "typescript": "^5.8.3"
-  }
+  },
+  "files": [
+    "dist",
+    "packages"
+  ]
 }
