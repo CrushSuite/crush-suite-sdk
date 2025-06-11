@@ -48,9 +48,31 @@ crushSuiteClient.compliance.complianceEvent({
 ### React
 Import helpers and components from `@crushsuite/sdk/react`
 
+#### Setup
+Add the `CrushSuiteProvider` context at the top of your layout.
+
+```ts
+import { CrushSuiteProvider } from '@crushsuite/sdk/react';
+
+export function Layout({ children }: {children?: React.ReactNode}) {
+  return (
+    <html lang="en">
+      <head>
+        ...
+      </head>
+      <body>
+        <CrushSuiteProvider>
+          {children}
+        </CrushSuiteProvider>
+      </body>
+  );
+}
+```
+
+
 #### Helpers
 
-`USAStates` object that includes all 50 US states
+`USAStates` object that includes all 50 US states. Use this to build shipping state selectors.
 
 #### Components
 
