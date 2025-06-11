@@ -7,6 +7,7 @@ export interface ComplianceCheckFormProps {
   billToAddress: OrderCheckComplianceAddress;
   onSubmit: (data: any) => void;
   onError?: (error: Error) => void;
+  sameAsBilling?: boolean;
 }
 
 export const ComplianceCheckForm = ({
@@ -14,6 +15,7 @@ export const ComplianceCheckForm = ({
   billToAddress,
   onSubmit,
   onError,
+  sameAsBilling = true,
 }: ComplianceCheckFormProps) => {
   const defaultState = getLocalStore(CRUSHSUITE_SHIPPING_STATE);
 
