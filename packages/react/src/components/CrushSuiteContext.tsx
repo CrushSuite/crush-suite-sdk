@@ -5,6 +5,7 @@ import {
   CRUSH_SUITE_NAMESPACE,
   CRUSHSUITE_SHIPPING_STATE,
   CRUSHSUITE_CUSTOMER_DOB,
+  CRUSHSUITE_AGE_VERIFIED,
 } from "../constants";
 import { getCookie, setCookie, removeCookie } from "../lib/cookies";
 
@@ -38,7 +39,9 @@ export const CrushSuiteProvider = ({
     useState<USAStateAbbreviation | null>(
       getCookie(CRUSHSUITE_SHIPPING_STATE) as USAStateAbbreviation | null
     );
-  const [ageVerified, setAgeVerified] = useState<boolean>(false);
+  const [ageVerified, setAgeVerified] = useState<boolean>(
+    getCookie(CRUSHSUITE_AGE_VERIFIED) === "true" ? true : false
+  );
 
   const saveCustomerDOB = (dob: string | null) => {
     setCustomerDOB(dob);
@@ -60,6 +63,15 @@ export const CrushSuiteProvider = ({
     }
   };
 
+  const saveAgeVerified = (verified: boolean) => {
+    setAgeVerified(verified);
+    if (verified) {
+      setCookie(CRUSHSUITE_AGE_VERIFIED, "true");
+    } else {
+      removeCookie(CRUSHSUITE_AGE_VERIFIED);
+    }
+  };
+
   const contextValue: CrushSuiteContextType = {
     namespace: CRUSH_SUITE_NAMESPACE,
     customerDOB,
@@ -69,7 +81,7 @@ export const CrushSuiteProvider = ({
     shippingState,
     setShippingState: saveShippingState,
     ageVerified,
-    setAgeVerified,
+    setAgeVerified: saveAgeVerified,
   };
 
   return (

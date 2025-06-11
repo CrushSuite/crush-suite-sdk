@@ -1,4 +1,5 @@
 export const CRUSH_SUITE_NAMESPACE = "app--98845425665--crush_suite";
+export const LEGAL_AGE_FOR_ALCOHOL = 21;
 
 export const CART_CUSTOMER_DOB = "customer_dob__";
 export const CART_VALID_COMPLIANCE_ID = "valid_compliance_id__";

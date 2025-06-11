@@ -69,10 +69,17 @@ export function Layout({ children }: {children?: React.ReactNode}) {
 }
 ```
 
+#### Hooks
+The `useCrushSuite` hook exposes relevant data and helpers to manage compliance on the front-end.
+
+Data that can be used for compliance includes:
+- `customerDOB` (string)
+- `shippingState` (string)
+- `ageVerified` (boolean)
 
 #### Helpers
 
-`USAStates` object that includes all 50 US states. Use this to build shipping state selectors.
+`USAStates` object that includes all 50 US states. Use this (or the `USA_STATE_SELECT_OPTIONS` array) to build shipping state selectors.
 
 #### Components
 
