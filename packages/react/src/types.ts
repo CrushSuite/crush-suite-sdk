@@ -4,8 +4,10 @@ export type CrushSuiteContextType = {
   setCustomerDOB: (arg0: string | null) => void;
   customerDefaultAddress: string | null;
   setCustomerDefaultAddress: (arg0: string | null) => void;
-  shippingState: string | null; // 2-letter state code, e.g., "CA" for California
+  shippingState: USAStateAbbreviation | null; // 2-letter state code, e.g., "CA" for California
   setShippingState: (arg0: USAStateAbbreviation | null) => void;
+  ageVerified: boolean; // Indicates if the customer's age has been verified
+  setAgeVerified: (arg0: boolean) => void;
 };
 
 export type Cart = {
