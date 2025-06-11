@@ -1,18 +1,20 @@
 "use client";
 import React, { createContext, useState } from "react";
 import type { CrushSuiteContextType, USAStateAbbreviation } from "../types";
-import { CRUSH_SUITE_NAMESPACE } from "../constants";
-import { getLocalStore, setLocalStore } from "../lib/localStorage";
+import {
+  CRUSH_SUITE_NAMESPACE,
+  CRUSHSUITE_SHIPPING_STATE,
+  CRUSHSUITE_CUSTOMER_DOB,
+} from "../constants";
+import { getCookie, setCookie, removeCookie } from "../lib/cookies";
 
 const defaultContext: CrushSuiteContextType = {
   namespace: CRUSH_SUITE_NAMESPACE,
-  customerDOB: getLocalStore("CRUSHSUITE_CUSTOMER_DOB") as string | null,
+  customerDOB: null,
   setCustomerDOB: () => {},
   customerDefaultAddress: null,
   setCustomerDefaultAddress: () => {},
-  shippingState: getLocalStore(
-    "CRUSHSUITE_SHIPPING_STATE"
-  ) as USAStateAbbreviation | null,
+  shippingState: null,
   setShippingState: () => {},
   ageVerified: false,
   setAgeVerified: () => {},
@@ -26,20 +28,25 @@ export const CrushSuiteProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [customerDOB, setCustomerDOB] = useState<string | null>(null);
+  const [customerDOB, setCustomerDOB] = useState<string | null>(
+    getCookie(CRUSHSUITE_CUSTOMER_DOB) as string | null
+  );
   const [customerDefaultAddress, setCustomerDefaultAddress] = useState<
     string | null
   >(null);
   const [shippingState, setShippingState] =
-    useState<USAStateAbbreviation | null>(null);
+    useState<USAStateAbbreviation | null>(
+      getCookie(CRUSHSUITE_SHIPPING_STATE) as USAStateAbbreviation | null
+    );
   const [ageVerified, setAgeVerified] = useState<boolean>(false);
 
   const saveCustomerDOB = (dob: string | null) => {
     setCustomerDOB(dob);
+
     if (dob) {
-      setLocalStore("CRUSHSUITE_CUSTOMER_DOB", dob);
+      setCookie(CRUSHSUITE_CUSTOMER_DOB, dob);
     } else {
-      localStorage.removeItem("CRUSHSUITE_CUSTOMER_DOB");
+      removeCookie(CRUSHSUITE_CUSTOMER_DOB);
     }
   };
 
@@ -47,9 +54,9 @@ export const CrushSuiteProvider = ({
     setShippingState(state);
 
     if (state) {
-      setLocalStore("CRUSHSUITE_SHIPPING_STATE", state);
+      setCookie(CRUSHSUITE_SHIPPING_STATE, state);
     } else {
-      localStorage.removeItem("CRUSHSUITE_SHIPPING_STATE");
+      removeCookie(CRUSHSUITE_SHIPPING_STATE);
     }
   };
 

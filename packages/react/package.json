@@ -12,9 +12,11 @@
   },
   "dependencies": {
     "@crushsuite/sdk": "*",
+    "js-cookie": "^3.0.5",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "typescript": "^5.0.0"

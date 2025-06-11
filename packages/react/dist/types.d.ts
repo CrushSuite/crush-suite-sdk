@@ -4,8 +4,10 @@ export type CrushSuiteContextType = {
     setCustomerDOB: (arg0: string | null) => void;
     customerDefaultAddress: string | null;
     setCustomerDefaultAddress: (arg0: string | null) => void;
-    shippingState: string | null;
-    setShippingState: (arg0: string | null) => void;
+    shippingState: USAStateAbbreviation | null;
+    setShippingState: (arg0: USAStateAbbreviation | null) => void;
+    ageVerified: boolean;
+    setAgeVerified: (arg0: boolean) => void;
 };
 export type Cart = {
     attributes: unknown;
@@ -77,3 +79,4 @@ export type QuantityRule = {
     max: null;
     increment: number;
 };
+export type USAStateAbbreviation = "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DE" | "DC" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
