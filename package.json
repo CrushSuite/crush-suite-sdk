@@ -1,5 +1,5 @@
 {
-  "name": "@crushsuite/crush-suite-sdk",
+  "name": "@crushsuite/sdk",
   "workspaces": [
     "packages/*"
   ],

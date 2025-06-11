@@ -18,12 +18,12 @@ The React package includes helpers and components for managing customer and comp
 ### Core
 ***NOTE: All API requests should originate from a server. Do not expose your CrushSuite API keys to the client***
 
-Import from either the root package, or `crush-suite-sdk/core`
+Import from either the root package, or `@crushsuite/sdk/core`
 
 To make an API request, first instantiate a client using your API keys, eg:
 
 ```typescript
-import { createClient } from 'crush-suite-sdk'
+import { createClient } from '@crushsuite/sdk'
 
 export const crushSuiteClient = createClient({
   privateKey: process.env.CRUSH_SUITE_API_KEY!
@@ -46,7 +46,7 @@ crushSuiteClient.compliance.complianceEvent({
 ```
 
 ### React
-Import helpers and components from `crush-suite-sdk/react`
+Import helpers and components from `@crushsuite/sdk/react`
 
 #### Helpers
 
