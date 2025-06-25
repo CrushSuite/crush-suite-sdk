@@ -21,3 +21,5 @@ export const precomplianceEventType = {
 
 export const CART_CUSTOMER_DOB = "customer_dob__" as const; //  Key for storing customer date of birth in cart attributes
 export const CART_VALID_COMPLIANCE_ID = "valid_compliance_id__" as const; // Key for storing valid compliance ID in cart attributes
+
+export const CRUSHSUITE_COMPLIANCE_FEE_KEY = "cs_compliance_fee";

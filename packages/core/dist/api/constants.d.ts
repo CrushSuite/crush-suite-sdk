@@ -14,6 +14,6 @@ export declare const precomplianceEventType: {
     APPROVED: string;
     FAILED: string;
 };
-
-export declare const CART_CUSTOMER_DOB: "customer_dob__"; // Key for storing customer date of birth in cart attributes
-export declare const CART_VALID_COMPLIANCE_ID: "valid_compliance_id__"; // Key for storing valid compliance ID in cart attributes
+export declare const CART_CUSTOMER_DOB: "customer_dob__";
+export declare const CART_VALID_COMPLIANCE_ID: "valid_compliance_id__";
+export declare const CRUSHSUITE_COMPLIANCE_FEE_KEY = "cs_compliance_fee";

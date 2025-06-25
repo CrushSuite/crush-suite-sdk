@@ -33,7 +33,7 @@ export const crushSuiteClient = createClient({
 Then, utilize one of the client methods to make your request.
 
 #### Pre-Compliance Checks
-Before checkout, an order must be checked for compliance, and any applicable compliance fees need to be added to the cart.
+Immediately before checkout, an order must be checked for compliance, and any applicable compliance fees need to be added to the cart, and a compliance check ID, and the customer date of birth must be set as cart attributes.
 To check compliance, use:
 
 ```ts
@@ -93,12 +93,22 @@ Pre-compliance checks will return an object:
 **Upon valid pre-compliance check, the cart must be updated to include:**
 
 **Cart attributes:**
+
 - Import attribute key constants from CrushSuite Core. `import { CART_CUSTOMER_DOB, CART_VALID_COMPLIANCE_ID } from '@crushsuite/sdk/core'`
 - Customer date of Birth. Use the `CART_CUSTOMER_DOB` key, and `{ day, month, year }` for value
 - Valid compliance check ID. Use key `CART_VALID_COMPLIANCE_ID` and value `complianceKey`
 
 **Compliance Fees**
-Add any applicable compliance fees as cart line items
+
+- Add any applicable compliance fees as cart line items
+- Store the ID of the compliance fee in order to remove them if the user returns from checkout.
+
+##### Next Steps:
+
+Once the cart is updated with applicable attributes and compliance fees, you should redirect the user to checkout imediately.
+
+If the user abandons checkout and returns to the site, you should immediately remove the compliance fee(s) from their cart,
+using the stored ID of that item. This is to ensure that the proper amount of fees are added to the cart based on on the cart contents at time of checkout.
 
 #### Compliance Events
 To send compliance events (for analytics and logging), use:
