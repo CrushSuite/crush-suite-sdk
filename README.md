@@ -157,12 +157,16 @@ export function Layout({ children }: {children?: React.ReactNode}) {
 ```
 
 #### Hooks
-The `useCrushSuite` hook exposes relevant data and helpers to manage compliance on the front-end.
+The `useCrushSuite` hook exposes relevant data and helpers to manage compliance on the front-end, provided by the CrushSuite context.
 
 Data that can be used for compliance includes:
 - `customerDOB` (string)
 - `shippingState` (string)
 - `ageVerified` (boolean)
+- `complianceProduct` (number)
+
+***Note: Context data is saved to cookies on update, and retrieved for the next session***
+
 
 #### Helpers
 

@@ -46,6 +46,11 @@ export const CrushSuiteProvider = ({
   const [ageVerified, setAgeVerified] = useState<boolean>(
     getCookie(CRUSHSUITE_AGE_VERIFIED) === "true" ? true : false
   );
+  const [complianceProduct, setComplianceProduct] = useState<number | null>(
+    getCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY)
+      ? parseInt(getCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY) as string, 10)
+      : null
+  );
 
   const saveCustomerDOB = (dob: string | null) => {
     setCustomerDOB(dob);
@@ -76,9 +81,14 @@ export const CrushSuiteProvider = ({
     }
   };
 
-  const [complianceProduct, setComplianceProduct] = useState<number | null>(
-    null
-  );
+  const saveComplianceProduct = (productId: number | null) => {
+    setComplianceProduct(productId);
+    if (productId) {
+      setCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY, productId.toString());
+    } else {
+      removeCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY);
+    }
+  };
 
   const contextValue: CrushSuiteContextType = {
     namespace: CRUSH_SUITE_NAMESPACE,
@@ -91,7 +101,7 @@ export const CrushSuiteProvider = ({
     ageVerified,
     setAgeVerified: saveAgeVerified,
     complianceProduct,
-    setComplianceProduct,
+    setComplianceProduct: saveComplianceProduct,
   };
 
   return (
