@@ -15,7 +15,7 @@ CrushSuite SDK includes two packages, `core` and `react`, depending on your need
 
 The React package includes helpers and components for managing customer and compliance information, UI for common needs, and tools to facilitate compliance checks.
 
-### Core
+## Core
 ***NOTE: All API requests should originate from a server. Do not expose your CrushSuite API keys to the client***
 
 Import from either the root package, or `@crushsuite/sdk/core`
@@ -32,7 +32,7 @@ export const crushSuiteClient = createClient({
 
 Then, utilize one of the client methods to make your request.
 
-#### Pre-Compliance Checks
+### Pre-Compliance Checks
 Immediately before checkout, an order must be checked for compliance, and any applicable compliance fees need to be added to the cart, and a compliance check ID, and the customer date of birth must be set as cart attributes.
 To check compliance, use:
 
@@ -132,10 +132,10 @@ import { formatPhoneNumber } from '@crushsuite/sdk/core';
 const phoneNumber = formatPhoneNumber(inputPhoneNumber);
 ```
 
-### React
+## React
 Import helpers and components from `@crushsuite/sdk/react`
 
-#### Setup
+### Setup
 Add the `CrushSuiteProvider` context at the top of your layout.
 
 ```ts
@@ -156,7 +156,7 @@ export function Layout({ children }: {children?: React.ReactNode}) {
 }
 ```
 
-#### Hooks
+### Hooks
 The `useCrushSuite` hook exposes relevant data and helpers to manage compliance on the front-end, provided by the CrushSuite context.
 
 Data that can be used for compliance includes:
@@ -168,11 +168,26 @@ Data that can be used for compliance includes:
 ***Note: Context data is saved to cookies on update, and retrieved for the next session***
 
 
-#### Helpers
+### Helpers
 
 `USAStates` object that includes all 50 US states. Use this (or the `USA_STATE_SELECT_OPTIONS` array) to build shipping state selectors.
 
-#### Components
+### Icons
+
+We include several icons for ease of use:
+
+- `USAIcon`
+- `ShippingIcon`
+
+### Components
+
+#### Compliance Check Form
+
+```ts
+import { ComplianceCheckForm } from '@crushsuite/sdk/react';
+
+<ComplianceCheckForm />
+```
 
 
 ## Utilizing the CrushSuite API without the SDK
