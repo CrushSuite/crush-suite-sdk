@@ -1,12 +1,14 @@
 "use client";
 import React, { createContext, useState } from "react";
 import type { CrushSuiteContextType, USAStateAbbreviation } from "../types";
+
 import {
   CRUSH_SUITE_NAMESPACE,
   CRUSHSUITE_SHIPPING_STATE,
   CRUSHSUITE_CUSTOMER_DOB,
   CRUSHSUITE_AGE_VERIFIED,
-} from "../constants";
+  CRUSHSUITE_COMPLIANCE_FEE_KEY,
+} from "../../../core/src";
 import { getCookie, setCookie, removeCookie } from "../lib/cookies";
 
 const defaultContext: CrushSuiteContextType = {
@@ -19,6 +21,8 @@ const defaultContext: CrushSuiteContextType = {
   setShippingState: () => {},
   ageVerified: false,
   setAgeVerified: () => {},
+  complianceProduct: null,
+  setComplianceProduct: () => {},
 };
 
 export const CrushSuiteContext =
@@ -72,6 +76,10 @@ export const CrushSuiteProvider = ({
     }
   };
 
+  const [complianceProduct, setComplianceProduct] = useState<number | null>(
+    null
+  );
+
   const contextValue: CrushSuiteContextType = {
     namespace: CRUSH_SUITE_NAMESPACE,
     customerDOB,
@@ -82,6 +90,8 @@ export const CrushSuiteProvider = ({
     setShippingState: saveShippingState,
     ageVerified,
     setAgeVerified: saveAgeVerified,
+    complianceProduct,
+    setComplianceProduct,
   };
 
   return (

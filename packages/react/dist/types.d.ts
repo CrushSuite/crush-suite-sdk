@@ -8,6 +8,8 @@ export type CrushSuiteContextType = {
     setShippingState: (arg0: USAStateAbbreviation | null) => void;
     ageVerified: boolean;
     setAgeVerified: (arg0: boolean) => void;
+    complianceProduct: number | null;
+    setComplianceProduct: (arg0: number | null) => void;
 };
 export type Cart = {
     attributes: unknown;

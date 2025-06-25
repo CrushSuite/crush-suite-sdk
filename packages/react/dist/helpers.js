@@ -1,4 +1,4 @@
-import { LEGAL_AGE_FOR_ALCOHOL } from "./constants";
+import { LEGAL_AGE_FOR_ALCOHOL } from "../../core/src";
 export const USAStates = [
     { name: "Alabama", abbrev: "AL" },
     { name: "Alaska", abbrev: "AK" },

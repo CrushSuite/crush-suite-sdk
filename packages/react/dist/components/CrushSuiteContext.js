@@ -1,7 +1,7 @@
 "use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { createContext, useState } from "react";
-import { CRUSH_SUITE_NAMESPACE, CRUSHSUITE_SHIPPING_STATE, CRUSHSUITE_CUSTOMER_DOB, CRUSHSUITE_AGE_VERIFIED, } from "../constants";
+import { CRUSH_SUITE_NAMESPACE, CRUSHSUITE_SHIPPING_STATE, CRUSHSUITE_CUSTOMER_DOB, CRUSHSUITE_AGE_VERIFIED, } from "../../../core/src";
 import { getCookie, setCookie, removeCookie } from "../lib/cookies";
 const defaultContext = {
     namespace: CRUSH_SUITE_NAMESPACE,
@@ -13,6 +13,8 @@ const defaultContext = {
     setShippingState: () => { },
     ageVerified: false,
     setAgeVerified: () => { },
+    complianceProduct: null,
+    setComplianceProduct: () => { },
 };
 export const CrushSuiteContext = createContext(defaultContext);
 export const CrushSuiteProvider = ({ children, }) => {
@@ -47,6 +49,7 @@ export const CrushSuiteProvider = ({ children, }) => {
             removeCookie(CRUSHSUITE_AGE_VERIFIED);
         }
     };
+    const [complianceProduct, setComplianceProduct] = useState(null);
     const contextValue = {
         namespace: CRUSH_SUITE_NAMESPACE,
         customerDOB,
@@ -57,6 +60,8 @@ export const CrushSuiteProvider = ({ children, }) => {
         setShippingState: saveShippingState,
         ageVerified,
         setAgeVerified: saveAgeVerified,
+        complianceProduct,
+        setComplianceProduct,
     };
     return (_jsx(CrushSuiteContext.Provider, { value: contextValue, children: children }));
 };

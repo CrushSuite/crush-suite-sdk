@@ -1,5 +1,10 @@
 import type { CrushSuiteConfig, CrushSuiteAPI } from "./types";
-import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
+import {
+  STAGING_API,
+  PRODUCTION_API,
+  BASE_PATH,
+  ENDPOINTS,
+} from "../constants";
 import {
   ComplianceBodyReq,
   ComplianceEventReq,

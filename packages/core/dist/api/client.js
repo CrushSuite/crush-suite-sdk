@@ -1,4 +1,4 @@
-import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS } from "./constants";
+import { STAGING_API, PRODUCTION_API, BASE_PATH, ENDPOINTS, } from "../constants";
 import { ComplianceBodyReq, ComplianceEventReq, ComplianceFeeBodyReq, } from "./validation";
 export function createClient({ privateKey, sandboxKey, _environment, }) {
     const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;

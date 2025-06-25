@@ -29,7 +29,10 @@
     "build:core": "cd packages/core && npm run build",
     "build:react": "cd packages/react && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm publish --access public"
+    "publish": "npm publish --access public --workspace-concurrency=1"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
