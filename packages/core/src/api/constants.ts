@@ -18,3 +18,6 @@ export const PrecomplianceEventType = {
   APPROVED: "APPROVED",
   FAILED: "FAILED",
 };
+
+export const CART_CUSTOMER_DOB = "customer_dob__" as const; //
+export const CART_VALID_COMPLIANCE_ID = "valid_compliance_id__" as const;

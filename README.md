@@ -32,7 +32,65 @@ export const crushSuiteClient = createClient({
 
 Then, utilize one of the client methods to make your request.
 
-#### Compliance
+#### Pre-Compliance Checks
+Before checkout, an order must be checked for compliance, and any applicable compliance fees need to be added to the cart.
+To check compliance, use:
+
+```ts
+crusSuiteClient.compliance.prepurchaseCompliance({
+  variants: [
+    { id, quantity },
+    ...
+  ],
+  billToAddress: {
+    firstName,
+    lastName,
+    businessName,
+    street1,
+    street2,
+    city
+    postalCode,
+    stateCode,
+    country,
+  },
+  shipToAddress: {
+    firstName,
+    lastName,
+    businessName,
+    street1,
+    street2,
+    city
+    postalCode,
+    stateCode,
+    country,
+  },
+  dob: {
+    day,
+    month,
+    year,
+  },
+  email,
+  phoneNumber, // Must be 10-digit US phone number
+})
+```
+
+Pre-compliance checks will return an object:
+
+```ts
+{
+  valid: boolean;
+  complianceFee: ComplianceFee | null;
+  complianceKey: string | null;
+  errors: string[];
+}
+```
+
+- `valid` indicates if the order passed pre-compliance
+- `complianceFee` will be the variant ID and quantity of compliance fees to add to the cart
+- `complianceKey` is the unique ID of this cart compliance, to be passed as a cart attribute for verification on the API side
+- `errors` Is an array of error messages (if any)
+
+#### Compliance Events
 To send compliance events (for analytics and logging), use:
 
 ```ts
