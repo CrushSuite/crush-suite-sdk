@@ -7,10 +7,12 @@ export const ENDPOINTS = {
         prepurchaseCompliance: "compliance/prepurchase-compliance",
         alcoholFee: "compliance/alcohol-fee",
     },
-};
-export const PrecomplianceEventType = {
+}; // API endpoints for compliance-related operations
+export const precomplianceEventType = {
     INITIATED: "INITIATED",
     SUBMITTED: "SUBMITTED",
     APPROVED: "APPROVED",
     FAILED: "FAILED",
-};
+}; // Types of precompliance events
+export const CART_CUSTOMER_DOB = "customer_dob__"; //  Key for storing customer date of birth in cart attributes
+export const CART_VALID_COMPLIANCE_ID = "valid_compliance_id__"; // Key for storing valid compliance ID in cart attributes

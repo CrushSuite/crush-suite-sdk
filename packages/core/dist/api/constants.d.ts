@@ -8,9 +8,12 @@ export declare const ENDPOINTS: {
         alcoholFee: string;
     };
 };
-export declare const PrecomplianceEventType: {
+export declare const precomplianceEventType: {
     INITIATED: string;
     SUBMITTED: string;
     APPROVED: string;
     FAILED: string;
 };
+
+export declare const CART_CUSTOMER_DOB: "customer_dob__"; // Key for storing customer date of birth in cart attributes
+export declare const CART_VALID_COMPLIANCE_ID: "valid_compliance_id__"; // Key for storing valid compliance ID in cart attributes
