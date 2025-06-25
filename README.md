@@ -123,6 +123,15 @@ crushSuiteClient.compliance.complianceEvent({
 })
 ```
 
+#### Helpers
+For formatting user-input phone numbers, you can use:
+
+```ts
+import { formatPhoneNumber } from '@crushsuite/sdk/core';
+
+const phoneNumber = formatPhoneNumber(inputPhoneNumber);
+```
+
 ### React
 Import helpers and components from `@crushsuite/sdk/react`
 
