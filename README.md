@@ -90,6 +90,16 @@ Pre-compliance checks will return an object:
 - `complianceKey` is the unique ID of this cart compliance, to be passed as a cart attribute for verification on the API side
 - `errors` Is an array of error messages (if any)
 
+**Upon valid pre-compliance check, the cart must be updated to include:**
+
+**Cart attributes:**
+- Import attribute key constants from CrushSuite Core. `import { CART_CUSTOMER_DOB, CART_VALID_COMPLIANCE_ID } from '@crushsuite/sdk/core'`
+- Customer date of Birth. Use the `CART_CUSTOMER_DOB` key, and `{ day, month, year }` for value
+- Valid compliance check ID. Use key `CART_VALID_COMPLIANCE_ID` and value `complianceKey`
+
+**Compliance Fees**
+Add any applicable compliance fees as cart line items
+
 #### Compliance Events
 To send compliance events (for analytics and logging), use:
 
