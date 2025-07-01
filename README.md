@@ -1,4 +1,6 @@
 # CrushSuite SDK
+[![npm version](https://img.shields.io/npm/v/@crushsuite/sdk.svg)](https://www.npmjs.com/package/@crushsuite/sdk)
+[![build](https://github.com/CrushSuite/crush-suite-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/CrushSuite/crush-suite-sdk/actions)
 A toolkit for using CrushSuite outside of a theme context.
 
 ## Setup
