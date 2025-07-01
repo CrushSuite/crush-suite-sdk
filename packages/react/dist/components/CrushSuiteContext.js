@@ -1,7 +1,7 @@
 "use client";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { createContext, useState } from "react";
-import { CRUSH_SUITE_NAMESPACE, CRUSHSUITE_SHIPPING_STATE, CRUSHSUITE_CUSTOMER_DOB, CRUSHSUITE_AGE_VERIFIED, } from "../../../core/src";
+import { CRUSH_SUITE_NAMESPACE, CRUSHSUITE_SHIPPING_STATE, CRUSHSUITE_CUSTOMER_DOB, CRUSHSUITE_AGE_VERIFIED, CRUSHSUITE_COMPLIANCE_FEE_KEY, } from "../../../core/src";
 import { getCookie, setCookie, removeCookie } from "../lib/cookies";
 const defaultContext = {
     namespace: CRUSH_SUITE_NAMESPACE,
@@ -22,6 +22,9 @@ export const CrushSuiteProvider = ({ children, }) => {
     const [customerDefaultAddress, setCustomerDefaultAddress] = useState(null);
     const [shippingState, setShippingState] = useState(getCookie(CRUSHSUITE_SHIPPING_STATE));
     const [ageVerified, setAgeVerified] = useState(getCookie(CRUSHSUITE_AGE_VERIFIED) === "true" ? true : false);
+    const [complianceProduct, setComplianceProduct] = useState(getCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY)
+        ? parseInt(getCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY), 10)
+        : null);
     const saveCustomerDOB = (dob) => {
         setCustomerDOB(dob);
         if (dob) {
@@ -49,7 +52,15 @@ export const CrushSuiteProvider = ({ children, }) => {
             removeCookie(CRUSHSUITE_AGE_VERIFIED);
         }
     };
-    const [complianceProduct, setComplianceProduct] = useState(null);
+    const saveComplianceProduct = (productId) => {
+        setComplianceProduct(productId);
+        if (productId) {
+            setCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY, productId.toString());
+        }
+        else {
+            removeCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY);
+        }
+    };
     const contextValue = {
         namespace: CRUSH_SUITE_NAMESPACE,
         customerDOB,
@@ -61,7 +72,7 @@ export const CrushSuiteProvider = ({ children, }) => {
         ageVerified,
         setAgeVerified: saveAgeVerified,
         complianceProduct,
-        setComplianceProduct,
+        setComplianceProduct: saveComplianceProduct,
     };
     return (_jsx(CrushSuiteContext.Provider, { value: contextValue, children: children }));
 };

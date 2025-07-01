@@ -11,10 +11,10 @@
     "resolveJsonModule": true,
     "declaration": true,
     "baseUrl": ".",
+    "composite": true,
     "paths": {
       "@crushsuite/*": ["packages/*/src"]
     },
-    "composite": true,
     "rootDir": "src"
   },
   "include": ["src"]

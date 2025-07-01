@@ -1,12 +1,12 @@
 {
   "name": "@crushsuite/sdk",
+  "version": "0.0.14",
+  "description": "CrushSuite SDK",
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
-  "version": "0.0.14",
-  "description": "CrushSuite SDK",
   "main": "dist/index.js",
-  "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     "./core": {
@@ -25,7 +25,6 @@
   "scripts": {
     "build": "npm run build -ws && npm run build:root",
     "build:root": "tsc -p tsconfig.json",
-    "zbuild": "npm run build:core && npm run build:react",
     "build:core": "cd packages/core && npm run build",
     "build:react": "cd packages/react && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -50,5 +49,8 @@
   "files": [
     "dist",
     "packages"
-  ]
+  ],
+  "dependencies": {
+    "js-cookie": "^3.0.5"
+  }
 }

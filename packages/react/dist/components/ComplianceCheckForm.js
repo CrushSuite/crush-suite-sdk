@@ -1,7 +1,14 @@
-import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx } from "react/jsx-runtime";
 import { getLocalStore } from "../lib/localStorage";
 import { CRUSHSUITE_SHIPPING_STATE } from "../../../core/src";
-export const ComplianceCheckForm = ({ shipToAddress, billToAddress, onSubmit, onError, sameAsBilling = true, }) => {
+import { useState } from "react";
+export const ComplianceCheckForm = ({ shipToAddress, billToAddress, onSubmit = () => { }, onError = () => { }, sameAsBilling: defaultSameAsBilling = true, children, }) => {
     const defaultState = getLocalStore(CRUSHSUITE_SHIPPING_STATE);
-    return _jsx(_Fragment, {});
+    const [sameAsBilling, setSameAsBilling] = useState(defaultSameAsBilling);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        onSubmit(formData);
+    };
+    return _jsx("form", { onSubmit: handleSubmit, children: children });
 };
