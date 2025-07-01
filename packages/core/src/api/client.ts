@@ -83,12 +83,8 @@ export function createClient({
      * to fetch compliance-related metafields etc.
      */
     storefront: {
-      getShopCompliance: async (handle: string) => {
-        return getShopCompliance(
-          storefrontClient,
-          CRUSH_SUITE_NAMESPACE,
-          handle
-        );
+      getShopCompliance: async () => {
+        return getShopCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE);
       },
       updateCartAttributes: async (
         cartId: CartAttributesUpdateMutationVariables["cartId"],
