@@ -21,9 +21,7 @@ export async function updateCartAttributes(
   }
   const data = await client.query<CartAttributesUpdateMutationResponse>(
     CartAttributesUpdateMutation,
-    {
-      variables: { cartId, attributes },
-    }
+    { cartId, attributes }
   );
   return data;
 }

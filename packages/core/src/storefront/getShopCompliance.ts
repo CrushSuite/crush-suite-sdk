@@ -9,8 +9,6 @@ export async function getShopCompliance(
   namespace: string,
   handle: string
 ) {
-  const data = await client.query(CrushSuiteShopQuery, {
-    variables: { handle, namespace },
-  });
+  const data = await client.query(CrushSuiteShopQuery, { handle, namespace });
   return data as CrushSuiteShopQueryResponse;
 }

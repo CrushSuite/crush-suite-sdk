@@ -4,7 +4,7 @@ export declare const CartAttributesUpdateMutation: "#graphql\n  mutation cartAtt
  */
 export type CartAttributesUpdateMutationVariables = {
     attributes: {
-        key: string;
+        key: "customer_dob__" | "valid_compliance_id__";
         value: string;
     }[];
     cartId: string;
