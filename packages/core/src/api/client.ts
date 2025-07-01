@@ -1,4 +1,4 @@
-import type { CrushSuiteConfig, CrushSuiteAPI } from "./types";
+import type { CrushSuiteConfig, CrushSuiteAPI } from "../types";
 import {
   STAGING_API,
   PRODUCTION_API,

@@ -1,4 +1,4 @@
-import type { OrderCheckComplianceAddress } from "../../../core/src/api/types";
+import type { OrderCheckComplianceAddress } from "../../../core/src/types";
 export interface ComplianceCheckFormProps {
     shipToAddress?: OrderCheckComplianceAddress;
     billToAddress?: OrderCheckComplianceAddress;

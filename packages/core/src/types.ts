@@ -40,7 +40,7 @@ export type OrderCheckComplianceAddress = {
   street2?: string;
   city: string;
   postalCode: string;
-  stateCode: string;
+  stateCode: USAStateAbbreviation; // 2 letter state code, e.g. 'OR', 'CA', 'NY'
   country: string; // 2 letter country code, e.g. 'US', 'CA'
 };
 
@@ -77,7 +77,7 @@ export interface OrderCheckComplianceResponse {
 }
 
 export type OrderCheckComplianceFeeRequest = {
-  shippingStateCode: string; // 2 letter state code, e.g. 'OR', 'CA', 'NY'
+  shippingStateCode: USAStateAbbreviation; // 2 letter state code, e.g. 'OR', 'CA', 'NY'
   variants: { id: number; quantity: number }[];
 };
 
@@ -120,7 +120,7 @@ export interface PrecomplianceCustomer {
     street2?: string | null;
     city: string;
     postalCode: string;
-    stateCode: string;
+    stateCode: USAStateAbbreviation;
   };
   dateOfBirth: PrecomplianceCustomerDOB;
 }
@@ -130,3 +130,56 @@ export type PrecomplianceCustomerDOB = {
   month: number;
   year: number;
 };
+
+export type USAStateAbbreviation =
+  | "AL"
+  | "AK"
+  | "AZ"
+  | "AR"
+  | "CA"
+  | "CO"
+  | "CT"
+  | "DE"
+  | "DC"
+  | "FL"
+  | "GA"
+  | "HI"
+  | "ID"
+  | "IL"
+  | "IN"
+  | "IA"
+  | "KS"
+  | "KY"
+  | "LA"
+  | "ME"
+  | "MD"
+  | "MA"
+  | "MI"
+  | "MN"
+  | "MS"
+  | "MO"
+  | "MT"
+  | "NE"
+  | "NV"
+  | "NH"
+  | "NJ"
+  | "NM"
+  | "NY"
+  | "NC"
+  | "ND"
+  | "OH"
+  | "OK"
+  | "OR"
+  | "PA"
+  | "RI"
+  | "SC"
+  | "SD"
+  | "TN"
+  | "TX"
+  | "UT"
+  | "VT"
+  | "VA"
+  | "WA"
+  | "WV"
+  | "WI"
+  | "WY";

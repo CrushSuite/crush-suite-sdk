@@ -1,6 +1,6 @@
 import { getLocalStore } from "../lib/localStorage";
 import { CRUSHSUITE_SHIPPING_STATE } from "../../../core/src";
-import type { OrderCheckComplianceAddress } from "../../../core/src/api/types";
+import type { OrderCheckComplianceAddress } from "../../../core/src/types";
 import { useState } from "react";
 
 export interface ComplianceCheckFormProps {
