@@ -1,9 +1,7 @@
 import Cookies from "js-cookie";
 
 export const getCookie = (name: string): string | null => {
-  console.log("Getting cookie:", name);
   if (typeof window === "undefined") return null;
-  console.log("Getting cookie:", Cookies.get(name));
   return Cookies.get(name) || null;
 };
 
