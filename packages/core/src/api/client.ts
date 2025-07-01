@@ -14,7 +14,11 @@ import {
 import { createCrushSuiteStorefrontClient } from "../storefront/client";
 import { getShopCompliance } from "../storefront/getShopCompliance";
 import { updateCartAttributes } from "../storefront/updateCartAttributes";
-import { CartAttributesUpdateMutationVariables } from "../graphql";
+import {
+  CartAttributesUpdateMutationVariables,
+  CrushSuiteProductQueryResponse,
+} from "../graphql";
+import { getProductCompliance } from "../storefront";
 
 export function createClient({
   storefrontPublicKey,
@@ -85,6 +89,15 @@ export function createClient({
     storefront: {
       getShopCompliance: async () => {
         return getShopCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE);
+      },
+      getProductCompliance: async (
+        handle: string
+      ): Promise<CrushSuiteProductQueryResponse> => {
+        return getProductCompliance(
+          storefrontClient,
+          CRUSH_SUITE_NAMESPACE,
+          handle
+        );
       },
       updateCartAttributes: async (
         cartId: CartAttributesUpdateMutationVariables["cartId"],

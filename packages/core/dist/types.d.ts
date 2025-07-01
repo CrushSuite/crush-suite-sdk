@@ -14,7 +14,7 @@ export interface CrushSuiteAPI {
         alcoholFee(complianceData: OrderCheckComplianceFeeRequest): Promise<OrderCheckComplianceFeeResponse>;
     };
     storefront: {
-        getShopCompliance(namespace: string, handle: string): Promise<CrushSuiteShopQueryResponse>;
+        getShopCompliance(): Promise<CrushSuiteShopQueryResponse>;
         updateCartAttributes(cartId: string, attributes: {
             key: string;
             value: string;

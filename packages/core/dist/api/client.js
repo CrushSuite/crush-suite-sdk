@@ -56,8 +56,8 @@ shop, privateKey, sandboxKey, _environment, }) {
          * to fetch compliance-related metafields etc.
          */
         storefront: {
-            getShopCompliance: async (handle) => {
-                return getShopCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE, handle);
+            getShopCompliance: async () => {
+                return getShopCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE);
             },
             updateCartAttributes: async (cartId, attributes) => {
                 return updateCartAttributes(storefrontClient, cartId, attributes);

@@ -1,5 +1,5 @@
 import { CrushSuiteShopQuery, } from "../graphql/queries/shopQuery";
-export async function getShopCompliance(client, namespace, handle) {
-    const data = await client.query(CrushSuiteShopQuery, { handle, namespace });
+export async function getShopCompliance(client, namespace) {
+    const data = await client.query(CrushSuiteShopQuery, { namespace });
     return data;
 }

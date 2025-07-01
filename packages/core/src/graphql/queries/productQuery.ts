@@ -25,3 +25,23 @@ export const CrushSuiteProductQuery = `#graphql
     }
   }
 ` as const;
+
+export type CrushSuiteProductQueryResponse = {
+  product: {
+    id: string;
+    title: string;
+    handle: string;
+    productCompliancePartnerName: {
+      key: string;
+      value: string;
+    } | null;
+    variants: {
+      nodes: {
+        noSaleStates: {
+          key: string;
+          value: string;
+        } | null;
+      }[];
+    };
+  };
+};
