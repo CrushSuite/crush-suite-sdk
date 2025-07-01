@@ -125,7 +125,44 @@ crushSuiteClient.compliance.complianceEvent({
 })
 ```
 
-#### Helpers
+### GraphQL Fragments
+We include helpful GraphQL fragments for ease of use in querying Shopify for compliance-related data.
+
+#### CartAttributesUpdateMutation
+Use this mutation to update cart attributes (such as compliance info) on a Shopify cart.
+
+```ts
+import {
+  CartAttributesUpdateMutation,
+  type CartAttributesUpdateMutationVariables,
+  type CartAttributesUpdateMutationResponse
+} from '@crushsuite/sdk/core';
+```
+
+#### CrushSuiteShopQuery
+Use this query to fetch shop metafields related to CrushSuite compliance configuration.
+
+```ts
+import {
+  CrushSuiteShopQuery,
+  type CrushSuiteShopQueryResponse
+} from '@crushsuite/sdk/core';
+```
+
+#### CrushSuiteProductQuery
+Use this query to fetch product details, including compliance partner and no-sale states for variants.
+
+```ts
+import { CrushSuiteProductQuery } from '@crushsuite/sdk/core';
+```
+
+### Typescript Types
+Both packages export a variety of useful types & interfaces, for interacting with the SDK or for building your own functionality. Some notable types include:
+
+- `USAStateAbbreviation` - A union of all 2-character USA State codes
+- `PrecomplianceEventType` - A union of all the precompliance event types, for sending analytics events
+
+### Helpers
 For formatting user-input phone numbers, you can use:
 
 ```ts
