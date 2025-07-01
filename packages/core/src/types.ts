@@ -1,7 +1,15 @@
+import {
+  CartAttributesUpdateMutationResponse,
+  CrushSuiteShopQueryResponse,
+} from "./graphql";
+
 export interface CrushSuiteConfig {
   privateKey: string;
   sandboxKey?: string;
   _environment?: "production" | "staging";
+  shop: string; // The Shopify shop domain, e.g. 'myshop.myshopify.com'
+  storefrontPublicKey?: string; // Optional for making storefront requests on behalf of merchant
+  storefrontApiVersion?: string; // Optional, defaults to '2025-07'
 }
 
 export interface CrushSuiteAPI {
@@ -16,7 +24,23 @@ export interface CrushSuiteAPI {
       complianceData: OrderCheckComplianceFeeRequest
     ): Promise<OrderCheckComplianceFeeResponse>;
   };
+  storefront: {
+    getShopCompliance(
+      namespace: string,
+      handle: string
+    ): Promise<CrushSuiteShopQueryResponse>;
+    updateCartAttributes(
+      cartId: string,
+      attributes: { key: string; value: string }[]
+    ): Promise<CartAttributesUpdateMutationResponse>;
+  };
 }
+
+/**
+ * Storefront types
+ */
+
+export { CrushSuiteShopQueryResponse, CartAttributesUpdateMutationResponse };
 
 /**
  * Precompliance event types
@@ -59,7 +83,10 @@ export type OrderCheckComplianceRequest = {
   phoneNumber: string; // Must be 10-digit US phone number
 };
 
-export type ComplianceFee = { [key: VariantId]: Quantity };
+export type ComplianceFee = {
+  fee: { [key: VariantId]: Quantity };
+  total: number;
+};
 
 type VariantId = number;
 type Quantity = number;

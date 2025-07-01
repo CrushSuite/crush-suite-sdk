@@ -16,7 +16,10 @@ export const CartAttributesUpdateMutation = `#graphql
  * Input type for the CartAttributesUpdateMutation graphql mutation.
  */
 export type CartAttributesUpdateMutationVariables = {
-  attributes: { key: string; value: string }[];
+  attributes: {
+    key: "customer_dob__" | "valid_compliance_id__";
+    value: string;
+  }[];
   cartId: string;
 };
 

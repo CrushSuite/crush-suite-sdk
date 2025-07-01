@@ -1,4 +1,8 @@
-import type { USAStateAbbreviation } from "../../core/src/types";
+import type {
+  OrderCheckComplianceRequest,
+  OrderCheckComplianceResponse,
+  USAStateAbbreviation,
+} from "../../core/src/types";
 export type { USAStateAbbreviation } from "../../core/src/types";
 
 export type CrushSuiteContextType = {
@@ -13,6 +17,11 @@ export type CrushSuiteContextType = {
   setAgeVerified: (arg0: boolean) => void;
   complianceProduct: number | null; // Product ID for compliance fees, if applicable
   setComplianceProduct: (arg0: number | null) => void;
+  handleComplianceCheck: (
+    arg0: OrderCheckComplianceRequest,
+    arg1: OrderCheckComplianceResponse,
+    arg2: (arg0: OrderCheckComplianceResponse) => void
+  ) => void; // Function to handle compliance checks
 };
 
 export type Cart = {
