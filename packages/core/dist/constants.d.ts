@@ -17,6 +17,7 @@ export declare const precomplianceEventType: {
 export declare const CART_CUSTOMER_DOB: "customer_dob__";
 export declare const CART_VALID_COMPLIANCE_ID: "valid_compliance_id__";
 export declare const CRUSHSUITE_COMPLIANCE_FEE_KEY = "cs_compliance_fee";
+export declare const CRUSHSUITE_COMPLIANCE_FEE_TAG = "compliance_fee";
 export declare const CRUSH_SUITE_NAMESPACE = "app--98845425665--crush_suite";
 export declare const LEGAL_AGE_FOR_ALCOHOL = 21;
 export declare const CRUSHSUITE_SHIPPING_STATE: "CRUSHSUITE_SHIPPING_STATE";
