@@ -10,7 +10,7 @@ export async function getCart(client: StorefrontClient, cartId: string) {
   }
 
   const data = await client.query<CrushSuiteCartResponse>(CrushSuiteCartQuery, {
-    variables: { cartId },
+    cartId,
   });
   return data.cart;
 }

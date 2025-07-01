@@ -14,7 +14,7 @@ export function createCrushSuiteStorefrontClient({
   storefrontAccessToken: string;
   apiVersion?: string;
 }): StorefrontClient {
-  const endpoint = `https://${shop}.myshopify.com/api/${apiVersion}/graphql.json`;
+  const endpoint = `https://${shop}/api/${apiVersion}/graphql.json`;
 
   async function query<T = any>(
     query: string,
@@ -23,6 +23,11 @@ export function createCrushSuiteStorefrontClient({
     if (!shop || !storefrontAccessToken) {
       throw new Error(
         "Shop and Storefront Access Token are required to make queries."
+      );
+    }
+    if (!shop.includes(".myshopify.com")) {
+      throw new Error(
+        "Invalid shop format. It should be in the format 'your-shop.myshopify.com'."
       );
     }
     const res = await fetch(endpoint, {
