@@ -18,6 +18,9 @@ export async function getShopCompliance(
     CrushSuiteShopQuery,
     { namespace }
   );
-  console.log("Fetched shop compliance data:", data);
+  console.log(
+    "Fetched shop compliance data:",
+    data.shop.merchantSalesUSAStates
+  );
   return data;
 }
