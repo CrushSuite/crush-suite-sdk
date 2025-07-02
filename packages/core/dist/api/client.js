@@ -3,6 +3,7 @@ import { ComplianceBodyReq, ComplianceEventReq, ComplianceFeeBodyReq, } from "./
 import { createCrushSuiteStorefrontClient } from "../storefront/client";
 import { getShopCompliance } from "../storefront/getShopCompliance";
 import { updateCartAttributes } from "../storefront/updateCartAttributes";
+import { getProductCompliance } from "../storefront";
 export function createClient({ storefrontPublicKey, storefrontApiVersion = "2025-07", // Default API version
 shop, privateKey, sandboxKey, _environment, }) {
     const apiUrl = _environment === "staging" ? STAGING_API : PRODUCTION_API;
@@ -57,7 +58,14 @@ shop, privateKey, sandboxKey, _environment, }) {
          */
         storefront: {
             getShopCompliance: async () => {
+                console.log("Fetching shop compliance data...");
+                if (!storefrontClient) {
+                    throw new Error("Storefront client is not initialized. Ensure you have provided a valid shop and storefront public key.");
+                }
                 return getShopCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE);
+            },
+            getProductCompliance: async (handle) => {
+                return getProductCompliance(storefrontClient, CRUSH_SUITE_NAMESPACE, handle);
             },
             updateCartAttributes: async (cartId, attributes) => {
                 return updateCartAttributes(storefrontClient, cartId, attributes);

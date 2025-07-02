@@ -1,4 +1,4 @@
-import { CartAttributesUpdateMutationResponse, CrushSuiteShopQueryResponse } from "./graphql";
+import { CartAttributesUpdateMutationResponse, CrushSuiteProductQueryResponse, CrushSuiteShopQueryResponse } from "./graphql";
 export interface CrushSuiteConfig {
     privateKey: string;
     sandboxKey?: string;
@@ -15,6 +15,7 @@ export interface CrushSuiteAPI {
     };
     storefront: {
         getShopCompliance(): Promise<CrushSuiteShopQueryResponse>;
+        getProductCompliance(handle: string): Promise<CrushSuiteProductQueryResponse>;
         updateCartAttributes(cartId: string, attributes: {
             key: string;
             value: string;

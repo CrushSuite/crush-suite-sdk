@@ -4,3 +4,4 @@ export * from "./updateCartAttributes";
 export * from "./getShopCompliance";
 export * from "./removeComplianceFee";
 export * from "./addComplianceFee";
+export * from "./getProductCompliance";

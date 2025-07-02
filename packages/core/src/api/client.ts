@@ -87,7 +87,7 @@ export function createClient({
      * to fetch compliance-related metafields etc.
      */
     storefront: {
-      getShopCompliance: async () => {
+      getShopCompliance: () => {
         console.log("Fetching shop compliance data...");
         if (!storefrontClient) {
           throw new Error(
