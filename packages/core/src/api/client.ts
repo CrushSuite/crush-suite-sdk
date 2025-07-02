@@ -88,7 +88,6 @@ export function createClient({
      */
     storefront: {
       getShopCompliance: () => {
-        console.log("Fetching shop compliance data...");
         if (!storefrontClient) {
           throw new Error(
             "Storefront client is not initialized. Ensure you have provided a valid shop and storefront public key."
