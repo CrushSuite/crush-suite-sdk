@@ -230,6 +230,10 @@ export const CrushSuiteProvider = ({
             [complianceFeeLine.id],
             cartId!
           );
+          setComplianceProduct(null);
+          removeCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY);
+          // Reload the page to ensure the cart is updated
+          setTimeout(() => window.location.reload(), 100);
         }
       }
       setComplianceProduct(null);
