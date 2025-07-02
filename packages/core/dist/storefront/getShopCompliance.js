@@ -7,6 +7,5 @@ export async function getShopCompliance(client, namespace) {
         throw new Error("Storefront client is required to get shop compliance");
     }
     const data = await client.query(CrushSuiteShopQuery, { namespace });
-    console.log("Fetched shop compliance data:", data.shop.merchantSalesUSAStates);
     return data;
 }
