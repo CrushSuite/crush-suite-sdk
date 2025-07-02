@@ -16,6 +16,7 @@ export const CrushSuiteProductQuery = `#graphql
       }
       variants(first: 250) {
         nodes {
+          id
           noSaleStates: metafield(namespace: $namespace, key: "variant_no_sale_states") {
             key
             value
