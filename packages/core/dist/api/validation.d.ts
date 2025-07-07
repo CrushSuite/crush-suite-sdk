@@ -87,6 +87,7 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         businessName?: string | undefined;
         street2?: string | undefined;
     }>;
+    bypassKYC: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     variants: {
         quantity: number;
@@ -121,6 +122,7 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         businessName?: string | undefined;
         street2?: string | undefined;
     };
+    bypassKYC?: boolean | undefined;
 }, {
     variants: {
         quantity: number;
@@ -155,6 +157,7 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         businessName?: string | undefined;
         street2?: string | undefined;
     };
+    bypassKYC?: boolean | undefined;
 }>;
 export declare const ComplianceFeeBodyReq: z.ZodObject<{
     variants: z.ZodArray<z.ZodObject<{

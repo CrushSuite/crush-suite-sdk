@@ -51,6 +51,10 @@ export type OrderCheckComplianceDOB = {
     month: number;
     year: number;
 };
+/**
+ * bypassKYC is an optional field that allows merchants to skip KYC checks.
+ * This is generally used for testing and is not recommended for production use.
+ */
 export type OrderCheckComplianceRequest = {
     variants: {
         id: number;
@@ -61,6 +65,7 @@ export type OrderCheckComplianceRequest = {
     dob: OrderCheckComplianceDOB;
     email: string;
     phoneNumber: string;
+    bypassKYC?: boolean;
 };
 export type ComplianceFee = {
     fee: {

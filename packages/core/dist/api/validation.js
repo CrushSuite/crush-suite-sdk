@@ -33,6 +33,7 @@ export const ComplianceBodyReq = z.object({
         stateCode: z.string(),
         country: z.string(),
     }),
+    bypassKYC: z.boolean().optional(),
 });
 export const ComplianceFeeBodyReq = z.object({
     variants: z.array(z.object({
