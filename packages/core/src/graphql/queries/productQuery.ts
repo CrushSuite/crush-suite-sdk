@@ -16,6 +16,7 @@ export const CrushSuiteProductQuery = `#graphql
       }
       variants(first: 250) {
         nodes {
+          id
           noSaleStates: metafield(namespace: $namespace, key: "variant_no_sale_states") {
             key
             value
@@ -25,3 +26,24 @@ export const CrushSuiteProductQuery = `#graphql
     }
   }
 ` as const;
+
+export type CrushSuiteProductQueryResponse = {
+  product: {
+    id: string;
+    title: string;
+    handle: string;
+    productCompliancePartnerName: {
+      key: string;
+      value: string;
+    } | null;
+    variants: {
+      nodes: {
+        id: string;
+        noSaleStates: {
+          key: string;
+          value: string;
+        } | null;
+      }[];
+    };
+  };
+};

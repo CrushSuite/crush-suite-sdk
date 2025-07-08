@@ -1,7 +1,16 @@
+import {
+  CartAttributesUpdateMutationResponse,
+  CrushSuiteProductQueryResponse,
+  CrushSuiteShopQueryResponse,
+} from "./graphql";
+
 export interface CrushSuiteConfig {
   privateKey: string;
   sandboxKey?: string;
   _environment?: "production" | "staging";
+  shop: string; // The Shopify shop domain, e.g. 'myshop.myshopify.com'
+  storefrontPublicKey?: string; // Optional for making storefront requests on behalf of merchant
+  storefrontApiVersion?: string; // Optional, defaults to '2025-07'
 }
 
 export interface CrushSuiteAPI {
@@ -16,7 +25,23 @@ export interface CrushSuiteAPI {
       complianceData: OrderCheckComplianceFeeRequest
     ): Promise<OrderCheckComplianceFeeResponse>;
   };
+  storefront: {
+    getShopCompliance(): Promise<CrushSuiteShopQueryResponse>;
+    getProductCompliance(
+      handle: string
+    ): Promise<CrushSuiteProductQueryResponse>;
+    updateCartAttributes(
+      cartId: string,
+      attributes: { key: string; value: string }[]
+    ): Promise<CartAttributesUpdateMutationResponse>;
+  };
 }
+
+/**
+ * Storefront types
+ */
+
+export { CrushSuiteShopQueryResponse, CartAttributesUpdateMutationResponse };
 
 /**
  * Precompliance event types
@@ -50,6 +75,10 @@ export type OrderCheckComplianceDOB = {
   year: number;
 };
 
+/**
+ * bypassKYC is an optional field that allows merchants to skip KYC checks.
+ * This is generally used for testing and is not recommended for production use.
+ */
 export type OrderCheckComplianceRequest = {
   variants: { id: number; quantity: number }[];
   billToAddress: OrderCheckComplianceAddress;
@@ -57,9 +86,13 @@ export type OrderCheckComplianceRequest = {
   dob: OrderCheckComplianceDOB;
   email: string;
   phoneNumber: string; // Must be 10-digit US phone number
+  bypassKYC?: boolean; // Optional, if true, skips KYC checks
 };
 
-export type ComplianceFee = { [key: VariantId]: Quantity };
+export type ComplianceFee = {
+  fee: { [key: VariantId]: Quantity };
+  total: number;
+};
 
 type VariantId = number;
 type Quantity = number;
