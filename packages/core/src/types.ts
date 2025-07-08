@@ -41,7 +41,10 @@ export interface CrushSuiteAPI {
  * Storefront types
  */
 
-export { CrushSuiteShopQueryResponse, CartAttributesUpdateMutationResponse };
+export type {
+  CrushSuiteShopQueryResponse,
+  CartAttributesUpdateMutationResponse,
+};
 
 /**
  * Precompliance event types

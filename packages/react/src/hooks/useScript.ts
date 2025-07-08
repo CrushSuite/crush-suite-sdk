@@ -1,29 +1,62 @@
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    scriptsInjected: { [key: string]: boolean };
+  }
+}
+
 export const useScript = (
   src: string,
   {
     async = true,
     id,
     onLoad,
-  }: { async?: boolean; id?: string; onLoad?: () => void }
+  }: { async?: boolean; id: string; onLoad?: () => void }
 ) => {
+  // console.log(`useScript: ${src} (async: ${async}, id: ${id})`);
   useEffect(() => {
-    // Prevent injecting twice
-    if (document.getElementById(id || src)) return;
+    if (typeof window === "undefined") return; // Only run on client
 
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = async;
-    if (id) script.id = id;
-    if (onLoad) script.onload = onLoad;
+    if (!id || !src) return; // No source or id provided
 
-    document.body.appendChild(script);
+    if (window.scriptsInjected && window.scriptsInjected[src]) {
+      return; // Script already injected
+    } else {
+      // Mark the script as injected
+      if (!window.scriptsInjected) {
+        window.scriptsInjected = {};
+      }
+      window.scriptsInjected[src] = true;
+    }
 
-    // Cleanup if the component unmounts
+    // Check for existing script by id or src
+    let script = id
+      ? (document.getElementById(id) as HTMLScriptElement | null)
+      : null;
+    if (!script) {
+      script = document.querySelector(
+        `script[src="${src}"]`
+      ) as HTMLScriptElement | null;
+    }
+    let created = false;
+
+    if (!script) {
+      script = document.createElement("script");
+      script.src = src;
+      script.async = async;
+      if (id) script.id = id;
+      if (onLoad) script.onload = onLoad;
+      document.body.appendChild(script);
+      created = true;
+    } else if (onLoad && !script.onload) {
+      script.onload = onLoad;
+    }
+
     return () => {
-      script.onload = null;
-      if (script.parentNode) {
+      // Only remove the script if we created it
+      if (created && script && script.parentNode) {
+        script.onload = null;
         script.parentNode.removeChild(script);
       }
     };

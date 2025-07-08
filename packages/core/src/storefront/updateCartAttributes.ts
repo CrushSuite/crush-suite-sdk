@@ -1,8 +1,8 @@
 import type { StorefrontClient } from "./client";
 import {
   CartAttributesUpdateMutation,
-  CartAttributesUpdateMutationVariables,
-  CartAttributesUpdateMutationResponse,
+  type CartAttributesUpdateMutationVariables,
+  type CartAttributesUpdateMutationResponse,
 } from "../graphql/mutations/cartAttributesMutation";
 
 export async function updateCartAttributes(
