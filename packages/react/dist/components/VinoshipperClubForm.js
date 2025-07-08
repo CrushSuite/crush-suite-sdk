@@ -5,7 +5,7 @@ import { useScript } from "../hooks/useScript";
 export const VinoshipperClubForm = ({ accountId, theme, darkMode, }) => {
     const themeValue = useMemo(() => {
         if (!!theme) {
-            return darkMode ? `${theme}-dark` : undefined;
+            return darkMode ? `${theme}-dark` : theme;
         }
         else if (darkMode) {
             return "dark";

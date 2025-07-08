@@ -195,6 +195,31 @@ export function Layout({ children }: {children?: React.ReactNode}) {
 }
 ```
 
+### Vinoshipper Clubs
+You can add the Vinoshipper Club embed using the `VinoshipperClubForm` component.
+
+```ts
+import { VinoshipperClubForm } from '@crushsuite/sdk/react';
+
+const ClubForm = () => <VinoshipperClubForm accountId="xxxx" theme="green" darkMode={false}/>;
+```
+
+***Parameters:***
+- `accountId` is the Vinoshipper account id for the merchant **(required)**
+- `theme` sets the color theme of the embed **(optional)**. Possible values are:
+  - `indigo`
+  - `purple`
+  - `pink`
+  - `red`
+  - `orange`
+  - `yellow`
+  - `green`
+  - `teal`
+  - `cyan`
+  - `gray`
+  - `black`
+- `darkMode` toggles dark mode (boolean) **(optional)**
+
 ### Hooks
 The `useCrushSuite` hook exposes relevant data and helpers to manage compliance on the front-end, provided by the CrushSuite context.
 

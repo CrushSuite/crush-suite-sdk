@@ -36,7 +36,7 @@ export const VinoshipperClubForm = ({
 }: VinoshipperClubFormProps) => {
   const themeValue = useMemo<string | undefined>(() => {
     if (!!theme) {
-      return darkMode ? `${theme}-dark` : undefined;
+      return darkMode ? `${theme}-dark` : theme;
     } else if (darkMode) {
       return "dark";
     }
