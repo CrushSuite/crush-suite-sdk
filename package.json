@@ -1,6 +1,6 @@
 {
   "name": "@crushsuite/sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CrushSuite SDK",
   "type": "module",
   "workspaces": [
