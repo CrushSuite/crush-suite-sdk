@@ -107,12 +107,7 @@ cartId, children, }) => {
                 const quantity = complianceProduct[variantId];
                 await addComplianceFee(storefrontClient, [
                     {
-                        attributes: [
-                            {
-                                key: "cs_compliance_fee",
-                                value: responseData.complianceFee.total.toString(),
-                            },
-                        ],
+                        attributes: [],
                         merchandiseId,
                         quantity,
                     },

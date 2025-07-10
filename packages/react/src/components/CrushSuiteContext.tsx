@@ -168,12 +168,7 @@ export const CrushSuiteProvider = ({
           storefrontClient,
           [
             {
-              attributes: [
-                {
-                  key: "cs_compliance_fee",
-                  value: responseData.complianceFee.total.toString(),
-                },
-              ],
+              attributes: [],
               merchandiseId,
               quantity,
             },
