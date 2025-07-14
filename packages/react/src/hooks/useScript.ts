@@ -58,6 +58,10 @@ export const useScript = (
       if (created && script && script.parentNode) {
         script.onload = null;
         script.parentNode.removeChild(script);
+        // Clear the injection tracking when script is removed
+        if (window.scriptsInjected) {
+          delete window.scriptsInjected[src];
+        }
       }
     };
   }, [src, async, id, onLoad]);
