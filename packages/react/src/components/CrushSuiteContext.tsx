@@ -168,12 +168,7 @@ export const CrushSuiteProvider = ({
           storefrontClient,
           [
             {
-              attributes: [
-                {
-                  key: "cs_compliance_fee",
-                  value: responseData.complianceFee.total.toString(),
-                },
-              ],
+              attributes: [],
               merchandiseId,
               quantity,
             },
@@ -239,6 +234,21 @@ export const CrushSuiteProvider = ({
       setComplianceProduct(null);
       removeCookie(CRUSHSUITE_COMPLIANCE_FEE_KEY);
     }
+  }, []);
+
+  /**
+   * Remove a Vinoshipper cart style to prevent it from displaying
+   * This is a workaround to hide the Vinoshipper cart that is injected into the
+   * DOM by the Vinoshipper Club form.
+   */
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = `#vs-cart { display: none; }`;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style); // cleanup
+    };
   }, []);
 
   const contextValue: CrushSuiteContextType = {
