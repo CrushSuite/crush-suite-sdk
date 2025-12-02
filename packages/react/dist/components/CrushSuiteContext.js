@@ -100,7 +100,9 @@ cartId, children, }) => {
                 ];
                 await updateCartAttributes(storefrontClient, cartId, attributes);
             }
-            if (responseData.complianceFee) {
+            if (responseData?.complianceFee &&
+                responseData.complianceFee.fee &&
+                responseData.complianceFee.total > 0) {
                 const complianceProduct = responseData.complianceFee.fee;
                 const variantId = parseInt(Object.keys(complianceProduct)[0]);
                 const merchandiseId = `gid://shopify/ProductVariant/${variantId}`;

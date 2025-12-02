@@ -6,5 +6,6 @@ export const useCrushSuite = () => {
   if (!CrushSuiteContext) {
     throw new Error("useCrushSuite must be used within a CrushSuiteProvider");
   }
+
   return useContext(CrushSuiteContext);
 };
