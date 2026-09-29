@@ -9,10 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added
   - None yet
+
+## [0.2.13] - 2026-09-29
+
+- Added
+  - `includesExternalComplianceProduct` option on `prepurchaseCompliance()` requests (2026-09-29)
+  - Optional `variants[].unitPrice` on `prepurchaseCompliance()` requests, used by ShipCompliant merchants (2026-09-29)
 - Changed
   - Remove attributes from add-to-cart compliance fee (2025-07-10)
 - Fixed
   - Fix Vinoshipper club form (2025-07-14)
+  - `compliance.alcoholFee()` now calls `/compliance/alcohol-fee` instead of `/compliance/prepurchase-compliance` (2026-09-29)
+  - `OrderCheckComplianceFeeResponse.fee` is now typed as the variant ID to quantity map, not a nested `{ fee, total }` object; `ComplianceFee.fee` is nullable to match the API (2026-09-29)
 
 ## [0.2.2] - 2025-07-08
 

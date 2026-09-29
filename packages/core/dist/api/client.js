@@ -49,7 +49,7 @@ shop, privateKey, sandboxKey, _environment, }) {
             },
             alcoholFee: (complianceData) => {
                 const validatedData = ComplianceFeeBodyReq.parse(complianceData);
-                return post(`${ENDPOINTS.compliance.prepurchaseCompliance}`, validatedData);
+                return post(`${ENDPOINTS.compliance.alcoholFee}`, validatedData);
             },
         },
         /**

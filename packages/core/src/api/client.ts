@@ -77,7 +77,7 @@ export function createClient({
       alcoholFee: (complianceData) => {
         const validatedData = ComplianceFeeBodyReq.parse(complianceData);
         return post(
-          `${ENDPOINTS.compliance.prepurchaseCompliance}`,
+          `${ENDPOINTS.compliance.alcoholFee}`,
           validatedData
         );
       },

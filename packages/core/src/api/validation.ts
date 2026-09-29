@@ -5,6 +5,7 @@ export const ComplianceBodyReq = z.object({
     z.object({
       quantity: z.number(),
       id: z.number(),
+      unitPrice: z.number().optional(),
     })
   ),
   email: z.string(),
@@ -37,6 +38,7 @@ export const ComplianceBodyReq = z.object({
     country: z.string(),
   }),
   bypassKYC: z.boolean().optional(),
+  includesExternalComplianceProduct: z.boolean().optional(),
 });
 
 export const ComplianceFeeBodyReq = z.object({

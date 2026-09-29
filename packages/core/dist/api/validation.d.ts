@@ -3,12 +3,15 @@ export declare const ComplianceBodyReq: z.ZodObject<{
     variants: z.ZodArray<z.ZodObject<{
         quantity: z.ZodNumber;
         id: z.ZodNumber;
+        unitPrice: z.ZodOptional<z.ZodNumber>;
     }, "strip", z.ZodTypeAny, {
         quantity: number;
         id: number;
+        unitPrice?: number | undefined;
     }, {
         quantity: number;
         id: number;
+        unitPrice?: number | undefined;
     }>, "many">;
     email: z.ZodString;
     dob: z.ZodObject<{
@@ -88,10 +91,12 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         street2?: string | undefined;
     }>;
     bypassKYC: z.ZodOptional<z.ZodBoolean>;
+    includesExternalComplianceProduct: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     variants: {
         quantity: number;
         id: number;
+        unitPrice?: number | undefined;
     }[];
     email: string;
     dob: {
@@ -123,10 +128,12 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         street2?: string | undefined;
     };
     bypassKYC?: boolean | undefined;
+    includesExternalComplianceProduct?: boolean | undefined;
 }, {
     variants: {
         quantity: number;
         id: number;
+        unitPrice?: number | undefined;
     }[];
     email: string;
     dob: {
@@ -158,6 +165,7 @@ export declare const ComplianceBodyReq: z.ZodObject<{
         street2?: string | undefined;
     };
     bypassKYC?: boolean | undefined;
+    includesExternalComplianceProduct?: boolean | undefined;
 }>;
 export declare const ComplianceFeeBodyReq: z.ZodObject<{
     variants: z.ZodArray<z.ZodObject<{

@@ -83,17 +83,30 @@ export type OrderCheckComplianceDOB = {
  * This is generally used for testing and is not recommended for production use.
  */
 export type OrderCheckComplianceRequest = {
-  variants: { id: number; quantity: number }[];
+  // unitPrice is optional and only used by merchants whose compliance partner
+  // is ShipCompliant, where it overrides the stored product price. Major
+  // units (e.g. 19.99). Ignored for other compliance partners.
+  variants: { id: number; quantity: number; unitPrice?: number }[];
   billToAddress: OrderCheckComplianceAddress;
   shipToAddress: OrderCheckComplianceAddress;
   dob: OrderCheckComplianceDOB;
   email: string;
   phoneNumber: string; // Must be 10-digit US phone number
   bypassKYC?: boolean; // Optional, if true, skips KYC checks
+  // Optional, set to true when the order contains products not managed by
+  // CrushSuite that still need compliance checks (e.g. wine club subscriptions
+  // from another app). When no variants are CrushSuite products, only age
+  // (21+) and state licensing are checked.
+  includesExternalComplianceProduct?: boolean;
 };
 
+/**
+ * Map of compliance fee product variant ID to the quantity to add to the cart.
+ */
+export type ComplianceFeeProducts = { [key: VariantId]: Quantity };
+
 export type ComplianceFee = {
-  fee: { [key: VariantId]: Quantity };
+  fee: ComplianceFeeProducts | null;
   total: number;
 };
 
@@ -117,10 +130,7 @@ export type OrderCheckComplianceFeeRequest = {
   variants: { id: number; quantity: number }[];
 };
 
-export interface OrderCheckComplianceFeeResponse {
-  fee: ComplianceFee | null;
-  total: number;
-}
+export type OrderCheckComplianceFeeResponse = ComplianceFee;
 
 export interface PurchasedOrderItem {
   productType: string;

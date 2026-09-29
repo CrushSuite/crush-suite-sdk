@@ -59,6 +59,7 @@ export type OrderCheckComplianceRequest = {
     variants: {
         id: number;
         quantity: number;
+        unitPrice?: number;
     }[];
     billToAddress: OrderCheckComplianceAddress;
     shipToAddress: OrderCheckComplianceAddress;
@@ -66,11 +67,16 @@ export type OrderCheckComplianceRequest = {
     email: string;
     phoneNumber: string;
     bypassKYC?: boolean;
+    includesExternalComplianceProduct?: boolean;
+};
+/**
+ * Map of compliance fee product variant ID to the quantity to add to the cart.
+ */
+export type ComplianceFeeProducts = {
+    [key: VariantId]: Quantity;
 };
 export type ComplianceFee = {
-    fee: {
-        [key: VariantId]: Quantity;
-    };
+    fee: ComplianceFeeProducts | null;
     total: number;
 };
 type VariantId = number;
@@ -92,10 +98,7 @@ export type OrderCheckComplianceFeeRequest = {
         quantity: number;
     }[];
 };
-export interface OrderCheckComplianceFeeResponse {
-    fee: ComplianceFee | null;
-    total: number;
-}
+export type OrderCheckComplianceFeeResponse = ComplianceFee;
 export interface PurchasedOrderItem {
     productType: string;
     name: string;
