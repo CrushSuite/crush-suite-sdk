@@ -29,7 +29,7 @@
     "build:react": "cd packages/react && npm run build",
     "type-check": "tsc --noEmit",
     "test": "exit 0",
-    "publish": "npm publish --access public --no-workspaces"
+    "release": "npm publish --access public --no-workspaces"
   },
   "publishConfig": {
     "access": "public"
